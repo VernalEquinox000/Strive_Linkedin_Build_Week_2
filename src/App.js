@@ -1,12 +1,22 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Aside from "./Components/Aside";
+
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer";
+import "./navbar.css";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
-  return <div className="App">
-   <Aside />
+  return (
+    <div className="App">
 
-  </div>;
+      <NavBar />
+
+      <Footer />
+
+    </div>
+  );
 }
 
 export default App;
