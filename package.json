@@ -12,7 +12,6 @@
     "bootstrap-react": "^0.5.0-alpha.13",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
-    "react-chat-widget": "^3.0.5",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",

@@ -1,6 +1,7 @@
 import React from "react";
 
-import { FaLinkedin, FaQuestion, FaCog } from "react-icons/fa";
+import { FaLinkedin, FaCog } from "react-icons/fa";
+import { HiQuestionMarkCircle } from "react-icons/hi";
 
 const Footer = () => {
   return (
@@ -60,15 +61,16 @@ const Footer = () => {
               className=" mb-4"
             >
               {" "}
-              <FaQuestion
+              <HiQuestionMarkCircle
+                size="18"
                 style={{
                   position: "absolute",
                   left: "-20px",
-                  bottom: "15px",
+                  bottom: "14px",
                 }}
               />
               Questions
-              <small>Visit our Help Center.</small>
+              <small style={{ fontSize: "10px" }}>Visit our Help Center.</small>
             </li>
             <li
               style={{
@@ -79,10 +81,11 @@ const Footer = () => {
               }}
             >
               <FaCog
+                size="16"
                 style={{ position: "absolute", left: "-20px", bottom: "15px" }}
               />
               Manage your account and Privacy
-              <small>Go to your Settings.</small>
+              <small style={{ fontSize: "10px" }}>Go to your Settings.</small>
             </li>
           </ul>
         </div>
