@@ -1,0 +1,34 @@
+.footer {
+    font-size: 12px;
+    line-height: 2.5;
+    font-weight: 600;
+}
+
+.footer-linked {
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    color: #0A66C2
+}
+
+.footer-icon-linkedin {
+    width: 30px;
+    height: 30px;
+    color: #0A66C2;
+    background-color: white;
+}
+
+
+
+.footer-elements-links {
+    color: #616160;
+    list-style: none;
+    padding-left: 3px;
+}
+
+
+.footer-elements li {
+    line-height: 1.5;
+    color: #616160;
+    list-style: none;
+}
