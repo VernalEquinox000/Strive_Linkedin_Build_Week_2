@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< Updated upstream
 import Header from "./Components/Header"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,6 +23,16 @@ function App() {
     </div>
   );
 
+=======
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Aside from "./Components/Aside";
+
+function App() {
+  return <div className="App">
+   <Aside />
+
+  </div>;
+>>>>>>> Stashed changes
 }
 
 export default App;
