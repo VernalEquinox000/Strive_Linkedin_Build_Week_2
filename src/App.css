@@ -19,16 +19,24 @@
 }
 
 
-
 .footer-elements-links {
-    color: #616160;
     list-style: none;
-    padding-left: 3px;
+    padding-left: 2px;
+}
+
+.footer-elements-links a {
+    color: #616160;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 
-.footer-elements li {
-    line-height: 1.5;
+.languageSelector {
+    margin-top: 4px;
+    border: 2px line #616160;
+    height: 20%;
+    letter-spacing: 0.5px;
     color: #616160;
-    list-style: none;
+    font-weight: 500;
 }

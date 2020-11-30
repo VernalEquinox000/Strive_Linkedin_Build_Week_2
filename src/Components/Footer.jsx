@@ -17,29 +17,57 @@ const Footer = () => {
       <div className="row footer pt-3">
         <div className="col-lg-2 col-md-4 col-sm-12">
           <ul className="footer-elements-links">
-            <li>About</li>
-            <li>Community</li>
             <li>
-              Privacy & Terms <faChevronDown />
+              <a href="">About</a>
             </li>
-            <li>Sales Solutions</li>
-            <li>Safety Center</li>
+            <li>
+              {" "}
+              <a href="">Community</a>
+            </li>
+            <li>
+              {" "}
+              <a href="">Privacy & Terms</a> <faChevronDown />
+            </li>
+            <li>
+              {" "}
+              <a href="">Sales Solutions</a>
+            </li>
+            <li>
+              {" "}
+              <a href="">Safety Center</a>
+            </li>
           </ul>
         </div>
         <div className="col-lg-2  col-md-4 col-sm-12">
           <ul className="footer-elements-links">
-            <li>Accessibility</li>
-            <li>Careers</li>
-            <li>Ad Choices</li>
-            <li>Mobile</li>
+            <li>
+              <a href="">Accessibility</a>
+            </li>
+            <li>
+              <a href="">Careers</a>
+            </li>
+            <li>
+              <a href="">Ad Choices</a>
+            </li>
+            <li>
+              <a href="">Mobile</a>
+            </li>
           </ul>
         </div>
         <div className="col-lg-2  col-md-4 col-sm-12">
           <ul className="footer-elements-links">
-            <li>Talent Solutions</li>
-            <li>Marketing</li>
-            <li>Advertising</li>
-            <li>Small Business</li>
+            <li>
+              <a href="">Talent Solutions</a>
+            </li>
+            <li>
+              <a href="">Marketing</a>
+            </li>
+            <li>
+              <a href="">Advertising</a>
+            </li>
+            <li>
+              <a href="">Small Business</a>
+            </li>
           </ul>
         </div>
         <div
@@ -57,6 +85,9 @@ const Footer = () => {
                 display: "flex",
                 flexDirection: "column",
                 lineHeight: "1.5",
+                fontSize: "13px",
+                fontWeight: 700,
+                color: "#616160",
               }}
               className=" mb-4"
             >
@@ -66,11 +97,13 @@ const Footer = () => {
                 style={{
                   position: "absolute",
                   left: "-20px",
-                  bottom: "14px",
+                  bottom: "16px",
                 }}
               />
-              Questions
-              <small style={{ fontSize: "10px" }}>Visit our Help Center.</small>
+              <a href="" style={{ color: "#616160" }}>
+                Questions ?
+              </a>
+              <small style={{ fontSize: "11px" }}>Visit our Help Center.</small>
             </li>
             <li
               style={{
@@ -78,14 +111,23 @@ const Footer = () => {
                 display: "flex",
                 flexDirection: "column",
                 lineHeight: "1.5",
+                fontSize: "13px",
+                fontWeight: 700,
+                color: "#616160",
               }}
             >
               <FaCog
                 size="16"
-                style={{ position: "absolute", left: "-20px", bottom: "15px" }}
+                style={{
+                  position: "absolute",
+                  left: "-20px",
+                  bottom: "17px",
+                }}
               />
-              Manage your account and Privacy
-              <small style={{ fontSize: "10px" }}>Go to your Settings.</small>
+              <a href="" style={{ color: "#616160" }}>
+                Manage your account and Privacy
+              </a>
+              <small style={{ fontSize: "11px" }}>Go to your Settings.</small>
             </li>
           </ul>
         </div>
@@ -96,10 +138,13 @@ const Footer = () => {
             flexDirection: "column",
             lineHeight: "1.5",
             marginBottom: "20px",
+            color: "#616160",
+            fontWeight: 300,
+            fontSize: "14px",
           }}
         >
           Select Language
-          <select>
+          <select className="languageSelector">
             <option>English</option>
             <option>Italiano(Italian)</option>
             <option>Deutsch(German)</option>
