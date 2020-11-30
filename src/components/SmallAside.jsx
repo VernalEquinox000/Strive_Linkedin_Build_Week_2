@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { Col ,Image} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+
 
 class SmallAside extends React.Component{
 

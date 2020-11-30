@@ -6,6 +6,7 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import SmallAside from "./SmallAside"
 
 class Aside extends React.Component{
+    "https://striveschool-api.herokuapp.com/api/profile/"
 
     state={
         profiles:[],
@@ -24,18 +25,14 @@ class Aside extends React.Component{
 
             this.setState({ profiles: data })
         
-            console.log(data);
-            
 
-            console.log(this.state.profiles)
-
-            console.log(this.state.profiles.username)
-            
-            
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    
+  
+  
+          }  catch(error) {
+                  console.log(error);
+                }
+            }
 
     componentDidMount() {
         this.fetchProfile();
@@ -59,7 +56,7 @@ class Aside extends React.Component{
                 </div>
                 <div className="box">
                    
-                <h3 className="pl-4">Peope you may know</h3>
+                <h3 className="pl-4 mb-5">Peope you may know</h3>
                     <Row>
                     {this.state.profiles.map((profile)=>(
                             <SmallAside obj={profile} />
@@ -110,7 +107,8 @@ class Aside extends React.Component{
 
 
 
-                    <h3 className="pl-4">People aslo viewed</h3>
+                    
+                    <h3 className="pl-4 mb-5">People aslo viewed</h3>
                     <Row>
                         {this.state.profiles.map((profile)=>(
                             <SmallAside obj={profile} />
