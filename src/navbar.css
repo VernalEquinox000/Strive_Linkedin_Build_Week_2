@@ -1,0 +1,45 @@
+.nav {
+  font-size: 0.5rem !important;
+}
+.NavLink {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .navbar-nav a {
+  color: rgba(0, 0, 0, 0.6) !important;
+  margin: 0 0.5em;
+}
+.navbar .navbar-nav span {
+  font-size: 12px;
+}
+
+.NavLink svg {
+  font-size: 1.3em;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+}
+
+.NavLink .userNavImg {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar .navbar-nav a:hover {
+  color: black !important;
+}
+
+.cont {
+  display: flex;
+}
+
+.userNavImg {
+  height: 1.5em;
+  width: 1.5em;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 50px;
+}
