@@ -73,12 +73,15 @@ export default class Header extends Component {
                                         <a href="#" style={{ fontWeight: "bolder" }}>129 links</a>{'  |  '} Strive School 
                                     </Card.Text>
                                         <Button variant="primary">Connect</Button>{' '}
-                                    <Card.Text>
-                                            {`${bio}`}
-                                    </Card.Text>
-                                        
                                 </Card.Body>
-                            </Card>
+                                </Card>
+                                <Card  className="mt-5">
+                                    <Card.Body>
+                                        <Card.Text>
+                                            {`${bio}`}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
                         </Col>
                     </Row>
                 </Container>
