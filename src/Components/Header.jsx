@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Aside from "./Aside"
 import EditModalProfile from './EditModalProfile'
+import ExperienceSection from './ExperienceSection'
 export default class Header extends Component {
 
     state = {
@@ -101,7 +102,9 @@ export default class Header extends Component {
                     
                     />
                 </Container>
+               
                 }
+                 <ExperienceSection object={this.state.profile} />
             </div>
         )
     }
