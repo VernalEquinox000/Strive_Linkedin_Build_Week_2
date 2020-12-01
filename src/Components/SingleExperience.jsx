@@ -24,7 +24,7 @@ export default class SingleExperience extends Component {
               <br />
               <span>Los Angeles</span>
             </div>
-            <Button className=" expBtn">
+            <Button className=" expBtn" onClick={this.props.onClick}>
               <BsPencil
                 className=" d-inline-block"
                 style={{ fontSize: "20px", color: "blue" }}

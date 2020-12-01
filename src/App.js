@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import NavBar from "./Components/NavBar";
-import ExperienceSection from "./Components/ExperienceSection";
+
 import Footer from "./Components/Footer";
 import "./Style/Navbar.css";
 import "./Style/ExperienceSection.css";
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Header />
-      <ExperienceSection />
+
       <Footer />
     </div>
   );
