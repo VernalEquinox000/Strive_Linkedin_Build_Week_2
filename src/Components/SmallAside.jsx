@@ -2,11 +2,11 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { Col ,Image} from 'react-bootstrap'
-import MyModal from "./MyModal";
+import InfoModal from './InfoModal'
 
 
 class SmallAside extends React.Component{
-state= {
+state={
     modalShow:false,
 }
 
@@ -15,9 +15,8 @@ render(){
         <>
         
         <Col xs={3}className="pl-4">
-        <Image
-         src={this.props.obj.image}
-          style={{widht:"60px", height:"60px"}} 
+        <Image src={this.props.obj.image}
+         style={{widht:"60px", height:"60px"}}
           roundedCircle 
           onClick={() => this.setState({ modalShow: true })}
           />
@@ -32,8 +31,7 @@ render(){
        <FontAwesomeIcon icon={faUserPlus} /> 
             <hr />
         </Col>
-        
-        <MyModal
+        <InfoModal
         name={this.props.obj.name}
           id={this.props.obj._id}
           surname={this.props.obj.surname}
@@ -50,6 +48,7 @@ render(){
           show={this.state.modalShow}
           onHide={() => this.setState({ modalShow: false })}
         />
+      
         </>
     )
 }
