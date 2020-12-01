@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 
 export default class AddModal extends Component {
+  state={
+    data:this.props.object
+  }
   handleSubmit = async () => {
+      
+
     try {
       const url = `https://striveschool-api.herokuapp.com/api/profile/${this.state.data._id}/experiences`;
       const response = await fetch(url, {
@@ -17,14 +22,7 @@ export default class AddModal extends Component {
       const expData = await response.json();
 
       console.log(expData);
-      /*this.setState({ profile: data })
-            
-                console.log(data);
-                
     
-                console.log(this.state.profile)
-    
-                console.log(this.state.profile.username)*/
     } catch (err) {
       console.log(err);
     }
