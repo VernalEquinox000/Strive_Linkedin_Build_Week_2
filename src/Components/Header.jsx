@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import Background from "../Assets/linkedin_bg.jpeg"
 
 export default class Header extends Component {
@@ -46,7 +46,7 @@ export default class Header extends Component {
         
         if (!profile) return <></>
 
-        const { name, surname, title, area } = profile
+        const { name, surname, title, area, bio } = profile
         
         return (
             <div>
@@ -70,11 +70,13 @@ export default class Header extends Component {
                                     <Card.Text style={{color: "grey"}}>
                                         {area}
                                         {'        '}
-                                        <a href="#" style={{ fontWeight: "bolder" }}>129 links</a>
+                                        <a href="#" style={{ fontWeight: "bolder" }}>129 links</a>{'  |  '} Strive School 
                                     </Card.Text>
-                                    <Card.Text className="position-absolute" style={{ right: "50px", bottom: "36px" }}>
-                                        Strive School 
+                                        <Button variant="primary">Connect</Button>{' '}
+                                    <Card.Text>
+                                            {`${bio}`}
                                     </Card.Text>
+                                        
                                 </Card.Body>
                             </Card>
                         </Col>
