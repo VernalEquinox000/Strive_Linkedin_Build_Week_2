@@ -6,9 +6,10 @@ import {
   Form,
   FormControl,
   Button,
-  NavDropdown,
+  // NavDropdown,
 } from "react-bootstrap";
-
+import { RiArrowDownSFill } from "react-icons/ri";
+import { CgMenuGridR } from "react-icons/cg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -17,7 +18,7 @@ import {
   faUserFriends,
   faCommentDots,
   faBell,
-  faTh,
+  // faTh,
 } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "../Assets/LI-In-Bug.png";
@@ -27,22 +28,33 @@ class NavBar extends Component {
   render() {
     return (
       <>
-        <Container>
-          <Navbar variant="white" className="NavLink">
+        <Navbar variant="white" className="NavLink py-0">
+          <Container className="py-0 navCtrPx">
             <div className="cont">
-              <Navbar.Brand href="#home">
+              <Navbar.Brand className="mr-1" href="#home">
                 <img
                   src={logo}
-                  style={{ whith: "1.8em", height: "1.8em" }}
+                  style={{ whith: "34px", height: "34px" }}
                   className="d-inline-block align-top"
                   alt="React Bootstrap logo"
                 />
               </Navbar.Brand>
               <Form inline>
-                <FormControl type="text" placeholder="" className="mr-sm-2" />
-                <Button variant="outline-info">
-                  <FontAwesomeIcon icon={faSearch} />
+                <Button
+                  className="fix-rounded-right searchColor pr-0"
+                  variant="outline-info"
+                >
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em" }}
+                    icon={faSearch}
+                  />
                 </Button>
+                <FormControl
+                  className="fix-rounded-left searchColor"
+                  size="sm"
+                  type="text"
+                  placeholder="Search"
+                />
               </Form>
             </div>
 
@@ -70,41 +82,39 @@ class NavBar extends Component {
               </Nav.Link>
 
               <div className="flex flex-column">
-                <img src={user} alt="" className="userNavImg" />
-                <NavDropdown title="you" id="collasible-nav-dropdown userDrop">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </div>
-
-              <div className="flex flex-column">
-                <FontAwesomeIcon icon={faTh} />
-                <NavDropdown title="Product" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link href="#" className="nav-link">
+                  <img src={user} alt="" className="userNavImg" />
+                  <span>
+                    Me{" "}
+                    <RiArrowDownSFill
+                      className="m-0 p-0 d-inline-block"
+                      style={{ fontSize: "17px" }}
+                    />
+                  </span>
+                </Nav.Link>
               </div>
             </Nav>
-          </Navbar>
-        </Container>
+            <Nav className="second-nav">
+              <Nav.Link href="#" className="nav-link">
+                <CgMenuGridR />
+                <span>
+                  Product{" "}
+                  <RiArrowDownSFill
+                    className="m-0 p-0 d-inline-block"
+                    style={{ fontSize: "17px" }}
+                  />
+                </span>
+              </Nav.Link>
+              <Nav.Link
+                href="#"
+                className="nav-link"
+                style={{ maxWidth: "70px", textDecoration: "underline" }}
+              >
+                <span style={{ color: "#5D3B09" }}>Reactivate premium</span>
+              </Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
       </>
     );
   }
