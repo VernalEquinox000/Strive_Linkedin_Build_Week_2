@@ -62,7 +62,7 @@ class Aside extends React.Component{
                 <h3 className="pl-4 mb-5">Peope you may know</h3>
                     <Row>
                     {this.state.profiles.map((profile2)=>(
-                            <SmallAside obj={profile2} />
+                            <SmallAside obj={profile2}  key={`userId${profile2._id}`}/>
                         ))}
 
                     {/* <Col xs={3} className="pl-4">
