@@ -1,8 +1,7 @@
 import React from 'react'
 import { Col, Container, Row, Image } from 'react-bootstrap'
 import "./aside.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+
 import SmallAside from "./SmallAside"
 
 class Aside extends React.Component{
@@ -10,6 +9,7 @@ class Aside extends React.Component{
 
     state={
         profiles:[],
+        profiles2:[],
     }
 
     fetchProfile = async () => {
@@ -23,8 +23,10 @@ class Aside extends React.Component{
         
             const data = await response.json()
 
-            this.setState({ profiles: data })
-        
+            this.setState({ profiles: data.slice(0,6) })
+            this.setState({profiles2:data.slice(10,16)})
+            
+            
 
     
   
@@ -39,7 +41,8 @@ class Aside extends React.Component{
     }
    
     render(){
-
+        console.log(this.state.profiles)
+        console.log(this.state.profiles2)
         return(
                 <>
                 <Container>
@@ -58,8 +61,8 @@ class Aside extends React.Component{
                    
                 <h3 className="pl-4 mb-5">Peope you may know</h3>
                     <Row>
-                    {this.state.profiles.map((profile)=>(
-                            <SmallAside obj={profile} />
+                    {this.state.profiles.map((profile2)=>(
+                            <SmallAside obj={profile2} />
                         ))}
 
                     {/* <Col xs={3} className="pl-4">
