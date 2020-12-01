@@ -41,31 +41,46 @@ export default class Header extends Component {
     }
 
     render() {
+
+        const { profile } = this.state
+        
+        if (!profile) return <></>
+
+        const { name, surname, title, area } = profile
+        
         return (
             <div>
-                <Container>
+                {
+                    this.state.profile &&
+                    <Container>
                     <Row>
                         <Col xs={12}>
                             <Card>
                                 <Card.Img variant="top" src={Background} style={{ objectFit: "cover", height: "180px" }}/>
-                                <Card.Body>
-                                    <Card.Text style={{fontSize: "30px", fontWeight:"bolder"}}>{this.state.profile && this.state.profile.name}{' '}
-                                        {this.state.profile && this.state.profile.surname}
+                                <Card.Body className="position-relative">
+                                    <img src="http://picsum.photos/300" className="position-absolute" style={{
+                                            top: "-75px", width: "150px", borderRadius: "100px",
+                                        }}/>
+                                    <Card.Text style={{ fontSize: "30px", fontWeight: "bolder", paddingTop:"100px"}}>
+                                        {`${name} ${surname}`}
                                     </Card.Text>
                                     <Card.Text>
-                                        {this.state.profile && this.state.profile.title}
+                                        {title}
                                     </Card.Text>
                                     <Card.Text style={{color: "grey"}}>
-                                        {this.state.profile && this.state.profile.area}{'        '} <a href="#" style={{fontWeight:"bolder"}}>129 links</a>
-                                </Card.Text>
-                                <Card.Text style={{color: "grey"}}>
-                                        {this.state.profile && this.state.profile.area}{'        '} <a href="#" style={{fontWeight:"bolder"}}>129 links</a>
-                                </Card.Text>
+                                        {area}
+                                        {'        '}
+                                        <a href="#" style={{ fontWeight: "bolder" }}>129 links</a>
+                                    </Card.Text>
+                                    <Card.Text className="position-absolute" style={{ right: "50px", bottom: "36px" }}>
+                                        Strive School 
+                                    </Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
                 </Container>
+                }
             </div>
         )
     }
