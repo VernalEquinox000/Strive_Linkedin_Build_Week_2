@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import Background from "../Assets/linkedin_bg.jpeg"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Aside from "./Aside"
+import EditModalProfile from './EditModalProfile'
 export default class Header extends Component {
 
     state = {
-        profile: null
+        profile: null,
+        editShow:false,
     };
 
     
@@ -62,7 +66,7 @@ export default class Header extends Component {
                                             top: "-75px", width: "150px", borderRadius: "100px",
                                         }}/>
                                     <Card.Text style={{ fontSize: "30px", fontWeight: "bolder", paddingTop:"100px"}}>
-                                        {`${name} ${surname}`}
+                                        {`${name} ${surname}`} <FontAwesomeIcon icon={faEdit} onClick={() => this.setState({ editShow: true })} /> 
                                     </Card.Text>
                                     <Card.Text>
                                         {title}
@@ -91,6 +95,11 @@ export default class Header extends Component {
                             <Aside />
                         </Col>
                     </Row>
+                    <EditModalProfile obj={this.state.profile} 
+                    show={this.state.editShow}
+                    onHide={() => this.setState({ editShow: false })}
+                    
+                    />
                 </Container>
                 }
             </div>

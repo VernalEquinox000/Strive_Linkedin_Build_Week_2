@@ -38,6 +38,9 @@ export default function InfoModal(props) {
                 <p>
                   <strong>Uptaded: </strong> {props.updatedAt}
                 </p>
+                <p>
+                  <strong>Uptaded: </strong> {props.id}
+                </p>
 
               </Col>
             </Row>

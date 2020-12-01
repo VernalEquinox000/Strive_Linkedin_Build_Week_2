@@ -5,7 +5,7 @@ import "./aside.css"
 import SmallAside from "./SmallAside"
 
 class Aside extends React.Component{
-    "https://striveschool-api.herokuapp.com/api/profile/"
+    
 
     state={
         profiles:[],
