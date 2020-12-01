@@ -22,9 +22,9 @@ class Aside extends React.Component{
             });
         
             const data = await response.json()
-
-            this.setState({ profiles: data.slice(0,6) })
             this.setState({profiles2:data.slice(10,16)})
+            this.setState({ profiles: data.slice(0,6) })
+           
             
             
 
