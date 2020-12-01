@@ -77,6 +77,10 @@ export default class Header extends Component {
                                 </Card>
                                 <Card  className="mt-5">
                                     <Card.Body>
+                                        <Card.Text style={{ fontSize: "30px", fontWeight: "bolder", paddingTop:"100px"}}>
+                                        About
+                                        </Card.Text>
+
                                         <Card.Text>
                                             {`${bio}`}
                                         </Card.Text>
