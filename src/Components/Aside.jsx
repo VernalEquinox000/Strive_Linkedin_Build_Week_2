@@ -47,13 +47,11 @@ class Aside extends React.Component{
                 <>
                 <Container>
                 <Row>
-                    <Col xs={8}>
-                        <h3>Pierdomenico part</h3>
-                    </Col>
+                 
 
 
 
-                    <Col xs={4} >
+                    <Col >
                 <div className="box1">
                 <Image src="http://placehold.jp/350x350.png" className="img-fluid"/>
                 </div>

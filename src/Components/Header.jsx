@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import Background from "../Assets/linkedin_bg.jpeg"
-
+import Aside from "./Aside"
 export default class Header extends Component {
 
     state = {
@@ -54,7 +54,7 @@ export default class Header extends Component {
                     this.state.profile &&
                     <Container>
                     <Row>
-                        <Col xs={12}>
+                        <Col xs={8}>
                             <Card>
                                 <Card.Img variant="top" src={Background} style={{ objectFit: "cover", height: "180px" }}/>
                                 <Card.Body className="position-relative">
@@ -86,6 +86,9 @@ export default class Header extends Component {
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
+                        </Col>
+                        <Col xs={4}>
+                            <Aside />
                         </Col>
                     </Row>
                 </Container>
