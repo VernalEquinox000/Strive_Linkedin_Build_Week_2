@@ -46,7 +46,7 @@ export default class Header extends Component {
         
         if (!profile) return <></>
 
-        const { name, surname, title, area, bio } = profile
+        const { name, surname, title, area, bio, image } = profile
         
         return (
             <div>
@@ -58,7 +58,7 @@ export default class Header extends Component {
                             <Card>
                                 <Card.Img variant="top" src={Background} style={{ objectFit: "cover", height: "180px" }}/>
                                 <Card.Body className="position-relative">
-                                    <img src="http://picsum.photos/300" className="position-absolute" style={{
+                                    <img src={image} className="position-absolute" style={{
                                             top: "-75px", width: "150px", borderRadius: "100px",
                                         }}/>
                                     <Card.Text style={{ fontSize: "30px", fontWeight: "bolder", paddingTop:"100px"}}>
