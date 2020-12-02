@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {AddPost,getAllPosts} from"../Api/post";
+import { AddPost, getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
 import {
   Card,
@@ -29,7 +29,7 @@ import {
 
 class NewsFeed extends Component {
   state = {
-    mypost:[],
+    mypost: [],
     post: [],
     postId: null,
     newPost: [],
@@ -54,22 +54,23 @@ class NewsFeed extends Component {
       },
     });
   };
-    handleSubmit = async (e) => {
-      e.preventDefault();
-      console.log(AddPost)
-      AddPost(this.state.body)
-  
-    }
-    componentDidMount = async()=>{
-      const exp = await getAllPosts ()
-      this.setState({mypost:exp})
-      console.log(exp)
-     console.log(this.state.newsFeed)
-     console.log(this.state.mypost)
-  
-  }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(AddPost);
+    AddPost(this.state.body);
+    this.fetchData();
+  };
+  fetchData = async () => {
+    const exp = await getAllPosts();
+    console.log("array", exp);
+    console.log(this.state.newsFeed);
+    console.log(this.state.mypost);
+    this.setState({ mypost: exp });
+  };
+  componentDidMount = async () => {
+    this.fetchData();
+  };
 
- 
   render() {
     return (
       <div className="container">
@@ -81,9 +82,7 @@ class NewsFeed extends Component {
                   <Card.Body
                     className="head-prof"
                     style={{ position: "relative", height: "100px" }}
-                  >
-                    
-                  </Card.Body>
+                  ></Card.Body>
                   <ListGroup
                     className="list-group-flush"
                     style={{
@@ -229,7 +228,6 @@ class NewsFeed extends Component {
                       type="text"
                       name="text"
                       id="text"
-                     
                       required
                     ></textarea>
                     <faKey style={{ color: "#000" }} />
@@ -260,7 +258,7 @@ class NewsFeed extends Component {
                       <button
                         style={{ background: "transparent" }}
                         className="btn-upload ml-5 left-border"
-                        onClick={ this.handleSubmit}
+                        onClick={this.handleSubmit}
                       >
                         <FaPaperPlane />
                       </button>
@@ -281,20 +279,21 @@ class NewsFeed extends Component {
                 </Card>
               </div>
             </div>
-           
+
             <Row>
-            {this.state.mypost.map((exp,i)=>{
-              return  <MySinglePost obj={exp} key={i} />
-             })} 
+              {this.state.mypost.map((exp, i) => {
+                return (
+                  <MySinglePost obj={exp} key={i} fetchData={this.fetchData} />
+                );
+              })}
             </Row>
           </div>
           <div className="col-lg-3 col-md-12 col-sm-12 btn-trans">
-          <Row>
-            {this.state.mypost.map((exp,i)=>{
-              
-              <MySinglePost obj={exp} key={i} />
-             })} 
-            </Row>
+            {/* <Row>
+              {this.state.mypost.map((exp, i) => {
+                <MySinglePost obj={exp} key={i} />;
+              })}
+            </Row> */}
             <div className="row">
               <div className="col-lg-12 col-md-6 col-sm-12 top-marg">
                 <Card>

@@ -1,9 +1,12 @@
 import React from "react";
 import { Col, Card, Button } from "react-bootstrap";
 import { FaShare, FaComment, FaThumbsUp } from "react-icons/fa";
+
+import EditPostModal from "./EditPostModal";
 class MySinglePost extends React.Component {
   state = {
-    postInfo: this.props.obj.text,
+    name: this.props.obj,
+
     showModal: false,
   };
 
@@ -20,7 +23,7 @@ class MySinglePost extends React.Component {
                 <img
                   className="mr-3"
                   style={{ width: "40px", height: "40px" }}
-                  src="https://media-exp1.licdn.com/dms/image/C560BAQG_9XYxosKCoA/company-logo_100_100/0?e=1600300800&v=beta&t=T65Ow--w87wk6t7oEmqRaEJw9mnWSttAdLUXk8kRl0c"
+                  src=""
                 />
 
                 <p
@@ -30,10 +33,8 @@ class MySinglePost extends React.Component {
                     flexDirection: "column",
                   }}
                 >
-                  {" "}
-                  Swiss Re
-                  <small>299,348 followers</small>
-                  <small>Promoted</small>
+                  {this.state.name.user.name}
+                  {this.state.name.user.surname}
                 </p>
               </div>
               <div className="col-4 text-right" style={{ fontWeight: "700" }}>
@@ -41,38 +42,28 @@ class MySinglePost extends React.Component {
                 <Button onClick={() => this.setState({ showModal: true })}>
                   ...
                 </Button>
+                <EditPostModal
+                  fetchData={this.props.fetchData}
+                  object={this.state.postInfo}
+                  show={this.state.showModal}
+                  onHide={() => this.setState({ showModal: false })}
+                  postInfo={this.props.obj}
+                />
               </div>
             </div>
           </Card.Body>
-          <img
-            style={{ height: "300px", marginTop: "-20px" }}
-            src="https://media-exp1.licdn.com/dms/image/sync/C4E18AQHUHo2BCdE25g/companyUpdate-article-image-shrink_627_1200/0?e=1595462400&v=beta&t=QiFtShVXzqzzYdtvWXAGcxvyPByYbBHs9xT1C152c0A"
-          />
+
           <Card.Footer>
             <p
               style={{
-                fontWeight: "700",
+                fontWeight: "500",
                 display: "flex",
                 justifyContent: "space-between",
-                fontSize: "15px",
+                fontSize: "12px",
               }}
             >
-              Climate change adaptation: What we can learn from the Dutch
-              masters | Swiss Re
-              <Button
-                style={{
-                  color: "#0073B1",
-                  background: "none",
-                  border: "1px solid #0073B1",
-                  fontSize: "15px",
-                  fontWeight: "700",
-                  borderRadius: "3px",
-                }}
-              >
-                Learn more
-              </Button>
+              {this.props.obj.text}
             </p>
-            <small>swissre.com</small>
           </Card.Footer>
           <Card.Body
             style={{
