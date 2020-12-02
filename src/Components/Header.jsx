@@ -11,7 +11,7 @@ import ExperienceSection from './ExperienceSection'
 export default class Header extends Component {
 
     state = {
-        profile: null,
+        profile: [],
         editShow:false,
     };
 
@@ -27,7 +27,7 @@ export default class Header extends Component {
       });
 
       const data = await response.json();
-
+      
 
             this.setState({ profile: data })
         
