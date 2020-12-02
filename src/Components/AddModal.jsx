@@ -1,36 +1,32 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
-
+import {AddExperiece} from '../Api/experiences'
 export default class AddModal extends Component {
   state={
-    data:this.props.object
+    body:null,
+    data:this.props.object,
   }
-  handleSubmit = async () => {
-      
-
-    try {
-      const url = `https://striveschool-api.herokuapp.com/api/profile/${this.state.data._id}/experiences`;
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(this.state.data),
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      const expData = await response.json();
-
-      console.log(expData);
-    
-    } catch (err) {
-      console.log(err);
-    }
+  handleChange = (e) => {
+    this.setState({
+      body: {
+        ...this.state.body,
+        [e.target.id]: e.target.value,
+      },
+    });
   };
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    AddExperiece({id:this.state.data._id,body:this.state.body})
+
+  }
+  
 
   render() {
     return (
       <>
+      
+   
+
         <Modal
           {...this.props}
           size="lg"
@@ -47,23 +43,23 @@ export default class AddModal extends Component {
                       <Form.Group>
                         <Row>
                           <Col>
-                            <Form.Label>First Name</Form.Label>
+                            <Form.Label>Role</Form.Label>
                             <Form.Control
                               type="text"
-                              placeholder="First name"
+                              placeholder="Role"
                               required
-                              id="firstName"
+                              id="role"
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
                           </Col>
                           <Col>
-                            <Form.Label>Last Name</Form.Label>
+                            <Form.Label>company</Form.Label>
                             <Form.Control
                               type="text"
-                              placeholder="Last name"
+                              placeholder="company"
                               required
-                              id="lastName"
+                              id="company"
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
@@ -73,55 +69,40 @@ export default class AddModal extends Component {
                       <Row>
                         <Col>
                           <Form.Group>
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label>startDate</Form.Label>
                             <Form.Control
-                              type="text"
-                              placeholder="username"
+                              type="date"
+                              placeholder="startDate"
                               required
-                              id="username"
+                              id="startDate"
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
-                            <Form.Text className="text-muted">
-                              We'll never share your email with anyone else.
-                            </Form.Text>
+                           
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group>
-                            <Form.Label>Title</Form.Label>
+                            <Form.Label>description</Form.Label>
                             <Form.Control
                               type="text"
-                              placeholder="title"
+                              placeholder="description"
                               required
-                              id="title"
+                              id="description"
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
                           </Form.Group>
                         </Col>
                       </Row>
+                    
                       <Form.Group>
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label>area</Form.Label>
                         <Form.Control
-                          type="email"
-                          placeholder="Enter email"
-                          required
-                          id="email"
-                          onKeyDown={this.handleChange}
-                          onChange={this.handleChange}
-                        />
-                        <Form.Text className="text-muted">
-                          We'll never share your email with anyone else.
-                        </Form.Text>
-                      </Form.Group>
-                      <Form.Group>
-                        <Form.Label>Created</Form.Label>
-                        <Form.Control
-                          placeholder="1234 Main St"
+                          placeholder="area"
                           type="text"
                           required
-                          id="dob"
+                          id="area"
                           onKeyDown={this.handleChange}
                           onChange={this.handleChange}
                         />

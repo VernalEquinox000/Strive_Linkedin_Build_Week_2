@@ -63,43 +63,7 @@ class Aside extends React.Component{
                             <SmallAside obj={profile2}  key={`userId${profile2._id}`}/>
                         ))}
 
-                    {/* <Col xs={3} className="pl-4">
-                    <Image src="http://placehold.jp/60x60.png" roundedCircle />
-                   
-                    </Col>
-                    <Col xs={7}>
-                     <p><b>Manuel</b></p>
-                    <a className="mr-4">Full stack Delevoper</a>
-
-                   
-                   
-                    <FontAwesomeIcon icon={faUserPlus} />
-                        <hr />
-                    </Col>
-                    <Col xs={3}className="pl-4">
-                    <Image src="http://placehold.jp/60x60.png" roundedCircle />
-                    
-                    </Col>
-                    <Col xs={9}>
-                     <p><b>Manuel</b></p>
-                    <a>Full stack Delevoper</a>
-                   
-                   
-                    <FontAwesomeIcon icon={faUserPlus} />
-                        <hr />
-                    </Col>
-                    <Col xs={3}className="pl-4">
-                    <Image src="http://placehold.jp/60x60.png" roundedCircle />
-                   
-                    </Col>
-                    <Col xs={9}>
-                     <p><b>Manuel</b></p>
-                    <a>Full stack Delevoper</a>
-                   
-                   
-                    <FontAwesomeIcon icon={faUserPlus} />
-                       
-                    </Col>  */}
+                 
                     </Row>
                     <p className="borderup d-flex justify-content-center">Show More</p>
                 </div>
@@ -114,45 +78,7 @@ class Aside extends React.Component{
                         {this.state.profiles.map((profile)=>(
                             <SmallAside obj={profile} />
                         ))}
-                    {/* <Col xs={3}className="pl-4">
-                    <Image src="http://placehold.jp/60x60.png" roundedCircle />
                    
-                    </Col>
-                    <Col xs={9}>
-                     <p><b>Manuel</b></p>
-                    <a>Full stack Delevoper</a>
-
-                   
-                   
-                    <FontAwesomeIcon icon={faUserPlus} />
-                        <hr />
-                    </Col>
-                    <Col xs={3}className="pl-4">
-                    <Image src="http://placehold.jp/60x60.png" roundedCircle />
-                   
-                    </Col>
-                    <Col xs={9}>
-                     <p><b>Manuel</b></p>
-                    <a>Full stack Delevoper</a>
-                   
-                   
-                    <FontAwesomeIcon icon={faUserPlus} />
-                        <hr />
-                    </Col>
-                    
-                    <Col xs={3}className="pl-4">
-                    <Image src="http://placehold.jp/60x60.png" roundedCircle />
-                   
-                    </Col>
-                    <Col xs={9}>
-                     <p><b>Manuel</b></p>
-                    <a>Full stack Delevoper</a>
-                   
-                   
-                    <FontAwesomeIcon icon={faUserPlus} />
-                        
-                    </Col>
-                     */}
                 
                   
                

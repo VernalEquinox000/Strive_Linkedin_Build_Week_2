@@ -8,12 +8,12 @@ class EditModalProfile extends React.Component{
         info: this.props.obj,
         modalShow:true,
       }
-    handleChange = (e) => {
+     handleChange = (e) => {
         this.setState({
-          info: {
-            ...this.state.info,
-            [e.target.id]: e.target.value,
-          },
+        info: {
+           ...this.state.info,
+         [e.target.id]: e.target.value,
+        },
         });
       };
     handleSubmit = async (e) => {

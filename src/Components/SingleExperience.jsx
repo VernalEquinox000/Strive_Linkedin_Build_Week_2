@@ -1,7 +1,27 @@
 import React, { Component } from "react";
 import { BsPencil } from "react-icons/bs";
+import {AiOutlineDelete} from 'react-icons/ai'
 import { Col, Row, Button } from "react-bootstrap";
+import {DeleteExperieces} from"../Api/experiences";
+import EditExpModal from './EditExpModal'
 export default class SingleExperience extends Component {
+    state={
+        data: this.props.exp,
+        editShow: false,
+        userId:this.props.userId._id,
+    }
+
+  DeleteExp = async ()=>{
+  
+     const deleted = await DeleteExperieces(this.props.userId._id,this.props.exp._id)
+     console.log(this.state.data,this.state.userId)
+
+   
+  }
+
+
+
+    
   render() {
     return (
       <div className="listItem">
@@ -24,14 +44,25 @@ export default class SingleExperience extends Component {
               <br />
               <span>Los Angeles</span>
             </div>
-            <Button className=" expBtn" onClick={this.props.onClick}>
+            <Button className=" expBtn" onClick={()=>this.setState({editShow:true})}>
               <BsPencil
                 className=" d-inline-block"
                 style={{ fontSize: "20px", color: "blue" }}
               />
             </Button>
+            <Button className=" expBtn" onClick={()=>this.DeleteExp()}>
+              <AiOutlineDelete
+                className=" d-inline-block"
+                style={{ fontSize: "20px", color: "blue" }}
+
+              />
+            </Button>
           </Col>
         </Row>
+       <EditExpModal object={this.state.data}
+            userid={this.state.userdId}
+          show={this.state.editShow}
+          onHide={() => this.setState({ editShow: false })}/>
       </div>
     );
   }

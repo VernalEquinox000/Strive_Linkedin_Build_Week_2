@@ -6,6 +6,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Aside from "./Aside"
 import EditModalProfile from './EditModalProfile'
 import ExperienceSection from './ExperienceSection'
+
 export default class Header extends Component {
 
     state = {
@@ -28,7 +29,7 @@ export default class Header extends Component {
 
             this.setState({ profile: data })
         
-            console.log(data);
+                
             
 
             console.log(this.state.profile)
