@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/Navbar.css";
 import "./Style/ExperienceSection.css";
+import "./Style/NewsFeed.css";
 import "./Style/App.css";
 
 function App() {

@@ -78,11 +78,57 @@ class NewsFeed extends Component {
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
-                <Card style={{ border: "1px solid #DFDFDF" }}>
-                  <Card.Body
-                    className="head-prof"
-                    style={{ position: "relative", height: "100px" }}
-                  ></Card.Body>
+
+             
+
+                <Card className="left-side-newsfeed">
+                  <Card.Body className="banner-profile">
+                    {this.state.user &&
+                      this.state.users.slice(0, 1).map((user, i) => {
+                        return (
+                          <Col key={i}>
+                            {user.image === undefined || user.image === "" ? (
+                              <img
+                                className="placeholder-img"
+                                src="https://cdn5.vectorstock.com/i/thumb-large/95/64/default-placeholder-businesswoman-half-length-por-vector-20889564.jpg"
+                                className="card-img img-fluid"
+                                alt="image"
+                              />
+                            ) : (
+                              <div
+                                style={{
+                                  position: "absolute",
+                                  top: "20px",
+                                  left: "35px",
+                                }}
+                              >
+                                <img
+                                  className="profile-img mb-2"
+                                  src={this.state.user.image}
+                                />
+
+                                <div
+                                  style={{
+                                    lineHeight: "0.9",
+                                    margin: "0 auto",
+                                  }}
+                                >
+                                  <h6
+                                    style={{ fontWeight: "700", width: "100%" }}
+                                  >
+                                    Welcome, {this.state.user.name}
+                                  </h6>
+                                  <small style={{ fontWeight: "500" }}>
+                                    {this.state.user.bio}
+                                  </small>
+                                </div>
+                              </div>
+                            )}
+                          </Col>
+                        );
+                      })}
+                  </Card.Body>
+
                   <ListGroup
                     className="list-group-flush"
                     style={{
@@ -144,27 +190,10 @@ class NewsFeed extends Component {
               <div className="col-12 mt-2">
                 <Card style={{ fontSize: "12px" }}>
                   <Card.Body>
-                    <p style={{ fontWeight: "500" }}>Recent</p>
-                    <ul
-                      className="list-unstyled"
-                      style={{ color: "#666666", fontWeight: "700" }}
-                    >
-                      <li>
-                        <FaNetworkWired /> Premium Career Group
-                      </li>
-                      <li>
-                        <FaHashtag /> programminglife
-                      </li>
-                      <li>
-                        <FaHashtag /> codinglife
-                      </li>
-                      <li>
-                        <FaHashtag /> learntocode
-                      </li>
-                      <li>
-                        <FaNetworkWired /> React learning Gro..
-                      </li>
-                    </ul>
+                    <p style={{ fontWeight: "700", color: "#0073B1" }}>
+                      Groups
+                    </p>
+
                     <p
                       style={{
                         display: "flex",
@@ -182,24 +211,6 @@ class NewsFeed extends Component {
                     <p style={{ fontWeight: "700", color: "#0073B1" }}>
                       Followed Hashtags
                     </p>
-                    <ul
-                      className="list-unstyled"
-                      style={{ color: "#666666", fontWeight: "700" }}
-                    >
-                      <li>
-                        <FaHashtag /> programming life
-                      </li>
-                      <li>
-                        <FaHashtag /> coding life
-                      </li>
-                      <li>
-                        <FaHashtag /> codinglife
-                      </li>
-                      <li>
-                        <FaHashtag /> learntocode
-                      </li>
-                      <li>See all</li>
-                    </ul>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem
@@ -230,10 +241,11 @@ class NewsFeed extends Component {
                       id="text"
                       required
                     ></textarea>
-                    <faKey style={{ color: "#000" }} />
+
                     <div>
                       <button
                         style={{ background: "transparent" }}
+
                         className="btn-upload"
                       >
                         <div class="image-upload" style={{ cursor: "pointer" }}>
@@ -259,23 +271,12 @@ class NewsFeed extends Component {
                         style={{ background: "transparent" }}
                         className="btn-upload ml-5 left-border"
                         onClick={this.handleSubmit}
+
                       >
                         <FaPaperPlane />
                       </button>
                     </div>
                   </Card.Body>
-                  <Card.Footer>
-                    <small
-                      style={{
-                        color: "rgb(0, 115, 177)",
-                        fontSize: "15px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Write an article
-                    </small>{" "}
-                    <small>on LinkedIn</small>
-                  </Card.Footer>
                 </Card>
               </div>
             </div>
