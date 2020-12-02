@@ -216,7 +216,7 @@ class NewsFeed extends Component {
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
-                <Card style={{ border: "1px solid #DFDFDF" }}>
+                <Card className="left-side-newsfeed">
                   <Card.Body className="banner-profile">
                     {this.state.user &&
                       this.state.users.slice(0, 1).map((user, i) => {
@@ -324,27 +324,10 @@ class NewsFeed extends Component {
               <div className="col-12 mt-2">
                 <Card style={{ fontSize: "12px" }}>
                   <Card.Body>
-                    <p style={{ fontWeight: "500" }}>Recent</p>
-                    <ul
-                      className="list-unstyled"
-                      style={{ color: "#666666", fontWeight: "700" }}
-                    >
-                      <li>
-                        <FaNetworkWired /> Premium Career Group
-                      </li>
-                      <li>
-                        <FaHashtag /> programminglife
-                      </li>
-                      <li>
-                        <FaHashtag /> codinglife
-                      </li>
-                      <li>
-                        <FaHashtag /> learntocode
-                      </li>
-                      <li>
-                        <FaNetworkWired /> React learning Gro..
-                      </li>
-                    </ul>
+                    <p style={{ fontWeight: "700", color: "#0073B1" }}>
+                      Groups
+                    </p>
+
                     <p
                       style={{
                         display: "flex",
@@ -362,24 +345,6 @@ class NewsFeed extends Component {
                     <p style={{ fontWeight: "700", color: "#0073B1" }}>
                       Followed Hashtags
                     </p>
-                    <ul
-                      className="list-unstyled"
-                      style={{ color: "#666666", fontWeight: "700" }}
-                    >
-                      <li>
-                        <FaHashtag /> programming life
-                      </li>
-                      <li>
-                        <FaHashtag /> coding life
-                      </li>
-                      <li>
-                        <FaHashtag /> codinglife
-                      </li>
-                      <li>
-                        <FaHashtag /> learntocode
-                      </li>
-                      <li>See all</li>
-                    </ul>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem
@@ -406,52 +371,17 @@ class NewsFeed extends Component {
                       onChange={this.sendPost}
                       type="text"
                     ></textarea>
-                    <faKey style={{ color: "#000" }} />
+
                     <div>
                       <button
                         style={{ background: "transparent" }}
-                        className="btn-upload"
-                      >
-                        <div class="image-upload" style={{ cursor: "pointer" }}>
-                          <label for="file-input">
-                            <FaCamera style={{ width: "20px" }} />
-                          </label>
-
-                          <input
-                            id="file-input"
-                            type="file"
-                            onChange={this.fileSelectedHandler}
-                            style={{ display: "none" }}
-                          />
-                        </div>
-                      </button>
-                      <button
-                        style={{ background: "transparent" }}
-                        className="btn-upload ml-5 left-border"
-                      >
-                        <FaPhotoVideo />
-                      </button>
-                      <button
-                        style={{ background: "transparent" }}
-                        className="btn-upload ml-5 left-border"
+                        className=" ml-5 left-border"
                         onClick={this.postStatus}
                       >
                         <FaPaperPlane />
                       </button>
                     </div>
                   </Card.Body>
-                  <Card.Footer>
-                    <small
-                      style={{
-                        color: "rgb(0, 115, 177)",
-                        fontSize: "15px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      Write an article
-                    </small>{" "}
-                    <small>on LinkedIn</small>
-                  </Card.Footer>
                 </Card>
               </div>
             </div>
