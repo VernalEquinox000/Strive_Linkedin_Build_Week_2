@@ -3,41 +3,25 @@ import { Container, ListGroup, Button } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
 import SingleExperience from "./SingleExperience";
 import AddModal from "./AddModal";
+
+import {getAllExperieces} from '../Api/experiences'
 export default class ExperienceSection extends Component {
   state = {
-    datas: this.props.object,
+    data: this.props.object,
     editShow: false,
+    myexperiences:null,
   };
 
-  //   handleSubmit = async () => {
-  //     try {
-  //       const url = `https://striveschool-api.herokuapp.com/api/profile/${this.state.data._id}/experiences`;
-  //       const response = await fetch(url, {
-  //         body: JSON.stringify(this.state.data),
-  //         headers: {
-  //           Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
+componentDidMount = async()=>{
+    const exp = await getAllExperieces (this.state.data._id)
+  this.setState({myexperiences:exp})
+   
 
-  //       const expData = await response.json();
+}
 
-  //       console.log(expData);
-  //       /*this.setState({ profile: data })
 
-  //             console.log(data);
+ 
 
-  //             console.log(this.state.profile)
-
-  //             console.log(this.state.profile.username)*/
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-
-  //   componentDidMount() {
-  //     this.fetchProfile();
-  //   }
 
   render() {
     return (
@@ -48,11 +32,16 @@ export default class ExperienceSection extends Component {
           onHide={() => this.setState({ editShow: false })}
         />
         <Container className="mt-3">
+
           <ListGroup>
             <ListGroup.Item bg="white">
               <div className="d-flex justify-content-between mb-4">
                 <h3 className="d-inline-block">Experience</h3>{" "}
-                <Button className="expBtn">
+
+                <Button className="expBtn" onClick={() => this.setState({ editShow: true })}>
+
+                
+
                   <AiOutlinePlus
                     className=" d-inline-block"
                     style={{ fontSize: "20px", color: "blue" }}
@@ -60,9 +49,19 @@ export default class ExperienceSection extends Component {
                 </Button>
               </div>
 
-              <SingleExperience
-                onClick={() => this.setState({ editShow: true })}
-              />
+                    {this.state.myexperiences !=null ? this.state.myexperiences.map((exp,i)=>{
+                            return <SingleExperience
+                           
+                            key={i}
+                            exp={exp}
+                            userId={this.state.data}
+                            
+                          />
+                    }): null}
+              
+
+
+
             </ListGroup.Item>
           </ListGroup>
         </Container>

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 
 
-export default function InfoModal(props) {
+export default function MyModal(props) {
   return (
     <Modal
       {...props}
@@ -38,10 +38,7 @@ export default function InfoModal(props) {
                 <p>
                   <strong>Uptaded: </strong> {props.updatedAt}
                 </p>
-                <p>
-                  <strong>Uptaded: </strong> {props.id}
-                </p>
-
+               
               </Col>
             </Row>
           </Container>
