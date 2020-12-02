@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BsPencil } from "react-icons/bs";
+
 import {AiOutlineDelete} from 'react-icons/ai'
 import { Col, Row, Button } from "react-bootstrap";
 import {DeleteExperieces} from"../Api/experiences";
@@ -21,7 +22,7 @@ export default class SingleExperience extends Component {
 
 
 
-    
+
   render() {
     return (
       <div className="listItem">
@@ -39,17 +40,22 @@ export default class SingleExperience extends Component {
           >
             <div>
               <h6>sexy beast management</h6>
+
               <span>{this.state.data.area}</span>
+
               <span>12 anni 7 mesi</span>
               <br />
               <span>Los Angeles</span>
             </div>
+
             <Button className=" expBtn" onClick={()=>this.setState({editShow:true})}>
+
               <BsPencil
                 className=" d-inline-block"
                 style={{ fontSize: "20px", color: "blue" }}
               />
             </Button>
+
             <Button className=" expBtn" onClick={()=>this.DeleteExp()}>
               <AiOutlineDelete
                 className=" d-inline-block"
@@ -63,6 +69,7 @@ export default class SingleExperience extends Component {
             userid={this.state.userdId}
           show={this.state.editShow}
           onHide={() => this.setState({ editShow: false })}/>
+
       </div>
     );
   }
