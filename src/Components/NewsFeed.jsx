@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import {AddPost,getAllPosts} from"../Api/post";
+import MySinglePost from "./MySinglePost";
 import {
   Card,
   ListGroup,
@@ -28,11 +29,12 @@ import {
 
 class NewsFeed extends Component {
   state = {
+    mypost:[],
     post: [],
     postId: null,
     newPost: [],
     person: [],
-    newsFeed: "",
+    body: null,
     image: "",
     showModal: false,
     users: [],
@@ -44,171 +46,30 @@ class NewsFeed extends Component {
     },
   };
 
-  //   handleChange = (event) => {
-  //     this.setState({
-  //       newsFeed: event.currentTarget.value,
-  //     });
-  //   };
+  handleChange = (e) => {
+    this.setState({
+      body: {
+        ...this.state.body,
+        [e.target.id]: e.target.value,
+      },
+    });
+  };
+    handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log(AddPost)
+      AddPost(this.state.body)
+  
+    }
+    componentDidMount = async()=>{
+      const exp = await getAllPosts ()
+      this.setState({mypost:exp})
+      console.log(exp)
+     console.log(this.state.newsFeed)
+     console.log(this.state.mypost)
+  
+  }
 
-  //   saveImg = (event) => {
-  //     let photo = new FormData();
-  //     photo.append("post", event.target.files[0]);
-  //     this.setState({
-  //       image: photo,
-  //     });
-  //   };
-
-  //   open = async (postId) => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/" + postId;
-  //     const response = await fetch(url, {
-  //       method: "GET",
-  //     });
-  //     const postInfo = await response.json();
-
-  //     const postText = postInfo.text;
-
-  //     this.setState({ showModal: true, postId: postId, oldPostText: postText });
-  //   };
-
-  //   getInitialState = () => {
-  //     return { showModal: false };
-  //   };
-
-  //   close = () => {
-  //     this.setState({ showModal: false });
-  //   };
-
-  //   componentDidMount = async () => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/";
-  //     const response = await fetch(url, {
-  //       method: "Get",
-  //       headers: new Headers({
-  //         "Content-type": "applicationCache/json",
-  //       }),
-  //     });
-
-  //     const urlforweclome = "https://linkedln-backend.herokuapp.com/api/profile/";
-  //     const userfromwelcome = this.props.location.pathname.split("/").pop();
-
-  //     const headers = new Headers();
-
-  //     headers.append("Content-Type", "application/json");
-  //     fetch(urlforweclome, {
-  //       method: "GET",
-  //       headers: headers,
-  //     })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //       })
-  //       .then((users) => {
-  //         this.setState({ users: users.profiles });
-  //       });
-  //     fetch(urlforweclome + userfromwelcome, {
-  //       method: "GET",
-  //       headers: headers,
-  //     })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //       })
-  //       .then((user) => {
-  //         console.log("user found!", user);
-  //         this.setState({ user });
-  //       });
-
-  //     const data = await response.json();
-  //     console.log(data);
-
-  //     this.setState({
-  //       post: data,
-  //     });
-
-  //     const responses = await fetch(
-  //       "https://linkedln-backend.herokuapp.com/api/posts/" +
-  //         this.props.match.params.username,
-  //       {
-  //         method: "GET",
-  //         headers: new Headers({
-  //           "Content-type": "applicationCache/json",
-  //         }),
-  //       }
-  //     );
-  //     const datas = await responses.json();
-  //     console.log(datas);
-  //     this.setState({ person: datas, loading: false });
-  //   };
-
-  //   sendPost = (e) => {
-  //     const newPost = this.state.sendStatus;
-  //     newPost.text = e.currentTarget.value;
-
-  //     this.setState({
-  //       sendStatus: {
-  //         text: e.currentTarget.value,
-  //       },
-  //     });
-  //     console.log("from post profile: ", newPost);
-  //   };
-  //   postStatus = async () => {
-  //     const url =
-  //       "https://linkedln-backend.herokuapp.com/api/posts/" +
-  //       this.props.match.params.username;
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       body: JSON.stringify(this.state.sendStatus),
-  //       headers: new Headers({
-  //         "Content-type": "application/json",
-  //       }),
-  //     });
-  //     const data = await response.json();
-  //     const id = data._id;
-  //     console.log(data);
-  //     setTimeout(async () => {
-  //       const response = await fetch(
-  //         "https://linkedln-backend.herokuapp.com/api/posts/" + id + "/upload",
-  //         {
-  //           method: "POST",
-  //           body: this.state.image,
-  //         },
-  //         2000
-  //       );
-  //     });
-
-  //     if (response.ok) {
-  //       alert("Post successfully!");
-  //     }
-  //   };
-
-  //   deleteStatus = async (postId) => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/";
-  //     const response = await fetch(url + postId, {
-  //       method: "DELETE",
-  //     });
-
-  //     if (response.ok) {
-  //       alert("Deleted successfully!");
-  //     } else {
-  //       alert("Cant delete another users post!");
-  //     }
-  //   };
-
-  //   editStatus = async (postId) => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/" + postId;
-  //     const response = await fetch(url, {
-  //       method: "PUT",
-  //       body: JSON.stringify(this.state.sendStatus),
-  //       headers: new Headers({
-  //         "Content-type": "application/json",
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       alert("Post successfully!");
-  //     }
-  //   };
+ 
   render() {
     return (
       <div className="container">
@@ -416,8 +277,13 @@ class NewsFeed extends Component {
                     <textarea
                       style={{ flex: "0.8", border: "none" }}
                       placeholder="Start a post"
-                      onChange={this.sendPost}
+                      onKeyDown={this.handleChange}
+                      onChange={this.handleChange}
                       type="text"
+                      name="text"
+                      id="text"
+                     
+                      required
                     ></textarea>
                     <faKey style={{ color: "#000" }} />
                     <div>
@@ -447,7 +313,7 @@ class NewsFeed extends Component {
                       <button
                         style={{ background: "transparent" }}
                         className="btn-upload ml-5 left-border"
-                        onClick={this.postStatus}
+                        onClick={ this.handleSubmit}
                       >
                         <FaPaperPlane />
                       </button>
@@ -468,6 +334,12 @@ class NewsFeed extends Component {
                 </Card>
               </div>
             </div>
+            <Row>
+            {this.state.mypost.map((exp,i)=>{
+              
+               <MySinglePost obj={exp} key={i} />
+              })} 
+            </Row>
             <Row>
               <Col>
                 {this.state.post
