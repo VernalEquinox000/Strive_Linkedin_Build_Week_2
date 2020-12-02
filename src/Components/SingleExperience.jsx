@@ -39,7 +39,7 @@ export default class SingleExperience extends Component {
           >
             <div>
               <h6>sexy beast management</h6>
-              <span>Sexy Beast L.A.</span>
+              <span>{this.state.data.area}</span>
               <span>12 anni 7 mesi</span>
               <br />
               <span>Los Angeles</span>
