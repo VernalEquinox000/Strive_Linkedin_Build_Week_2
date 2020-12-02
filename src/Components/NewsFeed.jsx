@@ -82,60 +82,7 @@ class NewsFeed extends Component {
                     className="head-prof"
                     style={{ position: "relative", height: "100px" }}
                   >
-                    {this.state.user &&
-                      this.state.users.slice(0, 1).map((user, i) => {
-                        return (
-                          <Col key={i}>
-                            {user.image === undefined || user.image === "" ? (
-                              <img
-                                src="https://cdn5.vectorstock.com/i/thumb-large/95/64/default-placeholder-businesswoman-half-length-por-vector-20889564.jpg"
-                                style={{
-                                  width: "30px",
-                                  border: "1px solid lightgray",
-                                  borderRadius: "2rem",
-                                }}
-                                className="card-img img-fluid"
-                                alt="image"
-                              />
-                            ) : (
-                              <div
-                                className="cent-welc"
-                                style={{
-                                  position: "absolute",
-                                  top: "20px",
-                                  left: "35px",
-                                }}
-                              >
-                                <img
-                                  className="mb-2"
-                                  style={{
-                                    width: "80px",
-                                    borderRadius: "50%",
-                                    border: "3px solid #fff",
-                                  }}
-                                  src={this.state.user.image}
-                                />
-
-                                <div
-                                  style={{
-                                    lineHeight: "0.9",
-                                    margin: "0 auto",
-                                  }}
-                                >
-                                  <h6
-                                    style={{ fontWeight: "700", width: "100%" }}
-                                  >
-                                    Welcome, {this.state.user.name}
-                                  </h6>
-                                  <small style={{ fontWeight: "500" }}>
-                                    {this.state.user.bio}
-                                  </small>
-                                </div>
-                              </div>
-                            )}
-                          </Col>
-                        );
-                      })}
+                    
                   </Card.Body>
                   <ListGroup
                     className="list-group-flush"
@@ -334,151 +281,20 @@ class NewsFeed extends Component {
                 </Card>
               </div>
             </div>
+           
             <Row>
             {this.state.mypost.map((exp,i)=>{
-              
-               <MySinglePost obj={exp} key={i} />
-              })} 
-            </Row>
-            <Row>
-              <Col>
-                {this.state.post
-                  .filter((post) => post.user)
-                  .map((user, i) => {
-                    console.log(user.image);
-                    if (user.user)
-                      return (
-                        <>
-                          <Card body key={i} className="mt-2">
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                              }}
-                            >
-                              <p
-                                style={{ fontWeight: "700", fontSize: "14px" }}
-                              >
-                                <img
-                                  src={user.user.image}
-                                  style={{
-                                    width: "40px",
-                                    height: "40px",
-                                    borderRadius: "50%",
-                                    marginRight: "10px",
-                                  }}
-                                />{" "}
-                                {user.user.name}
-                              </p>
-
-                              <Dropdown>
-                                <Dropdown.Toggle
-                                  style={{
-                                    background: "none",
-                                    color: "#000",
-                                    border: "none",
-                                  }}
-                                ></Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                  <Dropdown.Item
-                                    onClick={() => this.open(user._id)}
-                                  >
-                                    Edit
-                                  </Dropdown.Item>
-
-                                  <Dropdown.Item
-                                    href="#/action-2"
-                                    onClick={() => this.deleteStatus(user._id)}
-                                  >
-                                    Delete
-                                  </Dropdown.Item>
-                                </Dropdown.Menu>
-                              </Dropdown>
-                              <Modal
-                                show={this.state.showModal}
-                                onHide={() => this.close()}
-                              >
-                                <Modal.Header closeButton>
-                                  <Modal.Title>Edit message</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                  <textarea
-                                    value={this.state.oldPostText}
-                                    onChange={this.sendPost}
-                                    style={{ width: "100%", border: "none" }}
-                                  ></textarea>
-                                </Modal.Body>
-
-                                <Modal.Footer>
-                                  <Button onClick={this.close}>Save</Button>
-                                </Modal.Footer>
-                              </Modal>
-                            </div>
-
-                            <small style={{ letterSpacing: "3px" }}>
-                              <FaPodcast className="mr-3" />
-                              {user.text}
-                            </small>
-                            <br></br>
-                            {user.image !== undefined && (
-                              <img src={user.image} />
-                            )}
-                            <div
-                              className="mt-4"
-                              style={{
-                                display: "flex",
-                                justifyContent: "flex-start",
-                                alignItems: "center",
-                              }}
-                            >
-                              <button
-                                className="btn-upload like-btn"
-                                onClick={() => this.addLikes(user._id)}
-                                style={{
-                                  background: "transparent",
-                                  display: "flex",
-                                  justifyContent: "space-between",
-                                  alignItems: "center",
-                                }}
-                              >
-                                {this.state.likes}
-                                <FaThumbsUp className="mr-2 ml-2" />
-                                Like
-                              </button>
-                              <button
-                                className="btn-upload "
-                                style={{ background: "transparent" }}
-                              >
-                                {" "}
-                                <FaComment className="mr-2" />
-                                Comment
-                              </button>
-                              <button
-                                className="btn-upload "
-                                style={{ background: "transparent" }}
-                              >
-                                <FaShare className="mr-2" />
-                                Share
-                              </button>
-                            </div>
-                          </Card>
-                          <Card.Footer
-                            style={{
-                              borderTop: "none",
-                              border: "1px solid #DFDFDF",
-                              fontSize: "12px",
-                            }}
-                          >
-                            Be the first to comment on this
-                          </Card.Footer>
-                        </>
-                      );
-                  })}
-              </Col>
+              return  <MySinglePost obj={exp} key={i} />
+             })} 
             </Row>
           </div>
           <div className="col-lg-3 col-md-12 col-sm-12 btn-trans">
+          <Row>
+            {this.state.mypost.map((exp,i)=>{
+              
+              <MySinglePost obj={exp} key={i} />
+             })} 
+            </Row>
             <div className="row">
               <div className="col-lg-12 col-md-6 col-sm-12 top-marg">
                 <Card>

@@ -64,13 +64,13 @@ export const AddPost= async (body)=>{
     }
     
 }
-export const EditPost = async(postId)=>{
+export const EditPost = async(postId,body)=>{
 
     try{
         const url = `https://striveschool-api.herokuapp.com/api/posts/${postId}`;
         const response = await fetch(url, {
             method: "PUT",
-            body: JSON.stringify(),
+            body: JSON.stringify(body),
             headers: {
               Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
               "Content-Type": "application/json",
