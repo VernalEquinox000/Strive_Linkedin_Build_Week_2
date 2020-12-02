@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { EditPost, getAllPosts } from "../Api/post";
+import { EditPost, DeletePost } from "../Api/post";
 export default class EditPostModal extends Component {
   state = {
     details: {
@@ -12,6 +12,11 @@ export default class EditPostModal extends Component {
     this.props.onHide();
     this.props.fetchData();
   };
+
+  deleteData =()=>{
+    DeletePost(this.props.postInfo._id)
+
+  }
   render() {
     return (
       <Modal {...this.props}>
@@ -33,11 +38,16 @@ export default class EditPostModal extends Component {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.props.onHide}>
+        <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
+
+        
           <Button variant="primary" onClick={() => this.updateData()}>
             Edit
+          </Button>
+          <Button variant="secondary" onClick={()=>this.deleteData()}>
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
