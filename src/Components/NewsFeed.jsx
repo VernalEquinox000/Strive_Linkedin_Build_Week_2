@@ -217,28 +217,20 @@ class NewsFeed extends Component {
             <div className="row">
               <div className="col-12">
                 <Card style={{ border: "1px solid #DFDFDF" }}>
-                  <Card.Body
-                    className="head-prof"
-                    style={{ position: "relative", height: "100px" }}
-                  >
+                  <Card.Body className="banner-profile">
                     {this.state.user &&
                       this.state.users.slice(0, 1).map((user, i) => {
                         return (
                           <Col key={i}>
                             {user.image === undefined || user.image === "" ? (
                               <img
+                                className="placeholder-img"
                                 src="https://cdn5.vectorstock.com/i/thumb-large/95/64/default-placeholder-businesswoman-half-length-por-vector-20889564.jpg"
-                                style={{
-                                  width: "30px",
-                                  border: "1px solid lightgray",
-                                  borderRadius: "2rem",
-                                }}
                                 className="card-img img-fluid"
                                 alt="image"
                               />
                             ) : (
                               <div
-                                className="cent-welc"
                                 style={{
                                   position: "absolute",
                                   top: "20px",
@@ -246,12 +238,7 @@ class NewsFeed extends Component {
                                 }}
                               >
                                 <img
-                                  className="mb-2"
-                                  style={{
-                                    width: "80px",
-                                    borderRadius: "50%",
-                                    border: "3px solid #fff",
-                                  }}
+                                  className="profile-img mb-2"
                                   src={this.state.user.image}
                                 />
 

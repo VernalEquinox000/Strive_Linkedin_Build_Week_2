@@ -7,6 +7,7 @@ import NewsFeed from "./Components/NewsFeed";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/Navbar.css";
 import "./Style/ExperienceSection.css";
+import "./Style/NewsFeed.css";
 import "./Style/App.css";
 
 function App() {
