@@ -126,7 +126,7 @@ export default class AddModal extends Component {
                         />
                        
                       </Form.Group>
-                      <Form.Group>
+              
               
 
                       <Button variant="primary" type="submit">
