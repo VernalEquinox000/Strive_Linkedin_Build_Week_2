@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { AddPost, getAllPosts } from "../Api/post";
+import MySinglePost from "./MySinglePost";
 import {
   Card,
   ListGroup,
@@ -28,11 +29,12 @@ import {
 
 class NewsFeed extends Component {
   state = {
+    mypost: [],
     post: [],
     postId: null,
     newPost: [],
     person: [],
-    newsFeed: "",
+    body: null,
     image: "",
     showModal: false,
     users: [],
@@ -44,171 +46,31 @@ class NewsFeed extends Component {
     },
   };
 
-  //   handleChange = (event) => {
-  //     this.setState({
-  //       newsFeed: event.currentTarget.value,
-  //     });
-  //   };
+  handleChange = (e) => {
+    this.setState({
+      body: {
+        ...this.state.body,
+        [e.target.id]: e.target.value,
+      },
+    });
+  };
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(AddPost);
+    AddPost(this.state.body);
+    this.fetchData();
+  };
+  fetchData = async () => {
+    const exp = await getAllPosts();
+    console.log("array", exp);
+    console.log(this.state.newsFeed);
+    console.log(this.state.mypost);
+    this.setState({ mypost: exp });
+  };
+  componentDidMount = async () => {
+    this.fetchData();
+  };
 
-  //   saveImg = (event) => {
-  //     let photo = new FormData();
-  //     photo.append("post", event.target.files[0]);
-  //     this.setState({
-  //       image: photo,
-  //     });
-  //   };
-
-  //   open = async (postId) => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/" + postId;
-  //     const response = await fetch(url, {
-  //       method: "GET",
-  //     });
-  //     const postInfo = await response.json();
-
-  //     const postText = postInfo.text;
-
-  //     this.setState({ showModal: true, postId: postId, oldPostText: postText });
-  //   };
-
-  //   getInitialState = () => {
-  //     return { showModal: false };
-  //   };
-
-  //   close = () => {
-  //     this.setState({ showModal: false });
-  //   };
-
-  //   componentDidMount = async () => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/";
-  //     const response = await fetch(url, {
-  //       method: "Get",
-  //       headers: new Headers({
-  //         "Content-type": "applicationCache/json",
-  //       }),
-  //     });
-
-  //     const urlforweclome = "https://linkedln-backend.herokuapp.com/api/profile/";
-  //     const userfromwelcome = this.props.location.pathname.split("/").pop();
-
-  //     const headers = new Headers();
-
-  //     headers.append("Content-Type", "application/json");
-  //     fetch(urlforweclome, {
-  //       method: "GET",
-  //       headers: headers,
-  //     })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //       })
-  //       .then((users) => {
-  //         this.setState({ users: users.profiles });
-  //       });
-  //     fetch(urlforweclome + userfromwelcome, {
-  //       method: "GET",
-  //       headers: headers,
-  //     })
-  //       .then((response) => {
-  //         if (response.ok) {
-  //           return response.json();
-  //         }
-  //       })
-  //       .then((user) => {
-  //         console.log("user found!", user);
-  //         this.setState({ user });
-  //       });
-
-  //     const data = await response.json();
-  //     console.log(data);
-
-  //     this.setState({
-  //       post: data,
-  //     });
-
-  //     const responses = await fetch(
-  //       "https://linkedln-backend.herokuapp.com/api/posts/" +
-  //         this.props.match.params.username,
-  //       {
-  //         method: "GET",
-  //         headers: new Headers({
-  //           "Content-type": "applicationCache/json",
-  //         }),
-  //       }
-  //     );
-  //     const datas = await responses.json();
-  //     console.log(datas);
-  //     this.setState({ person: datas, loading: false });
-  //   };
-
-  //   sendPost = (e) => {
-  //     const newPost = this.state.sendStatus;
-  //     newPost.text = e.currentTarget.value;
-
-  //     this.setState({
-  //       sendStatus: {
-  //         text: e.currentTarget.value,
-  //       },
-  //     });
-  //     console.log("from post profile: ", newPost);
-  //   };
-  //   postStatus = async () => {
-  //     const url =
-  //       "https://linkedln-backend.herokuapp.com/api/posts/" +
-  //       this.props.match.params.username;
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       body: JSON.stringify(this.state.sendStatus),
-  //       headers: new Headers({
-  //         "Content-type": "application/json",
-  //       }),
-  //     });
-  //     const data = await response.json();
-  //     const id = data._id;
-  //     console.log(data);
-  //     setTimeout(async () => {
-  //       const response = await fetch(
-  //         "https://linkedln-backend.herokuapp.com/api/posts/" + id + "/upload",
-  //         {
-  //           method: "POST",
-  //           body: this.state.image,
-  //         },
-  //         2000
-  //       );
-  //     });
-
-  //     if (response.ok) {
-  //       alert("Post successfully!");
-  //     }
-  //   };
-
-  //   deleteStatus = async (postId) => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/";
-  //     const response = await fetch(url + postId, {
-  //       method: "DELETE",
-  //     });
-
-  //     if (response.ok) {
-  //       alert("Deleted successfully!");
-  //     } else {
-  //       alert("Cant delete another users post!");
-  //     }
-  //   };
-
-  //   editStatus = async (postId) => {
-  //     const url = "https://linkedln-backend.herokuapp.com/api/posts/" + postId;
-  //     const response = await fetch(url, {
-  //       method: "PUT",
-  //       body: JSON.stringify(this.state.sendStatus),
-  //       headers: new Headers({
-  //         "Content-type": "application/json",
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       alert("Post successfully!");
-  //     }
-  //   };
   render() {
     return (
       <div className="container">
@@ -216,6 +78,9 @@ class NewsFeed extends Component {
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
+
+             
+
                 <Card className="left-side-newsfeed">
                   <Card.Body className="banner-profile">
                     {this.state.user &&
@@ -263,6 +128,7 @@ class NewsFeed extends Component {
                         );
                       })}
                   </Card.Body>
+
                   <ListGroup
                     className="list-group-flush"
                     style={{
@@ -368,15 +234,44 @@ class NewsFeed extends Component {
                     <textarea
                       style={{ flex: "0.8", border: "none" }}
                       placeholder="Start a post"
-                      onChange={this.sendPost}
+                      onKeyDown={this.handleChange}
+                      onChange={this.handleChange}
                       type="text"
+                      name="text"
+                      id="text"
+                      required
                     ></textarea>
 
                     <div>
                       <button
                         style={{ background: "transparent" }}
-                        className=" ml-5 left-border"
-                        onClick={this.postStatus}
+
+                        className="btn-upload"
+                      >
+                        <div class="image-upload" style={{ cursor: "pointer" }}>
+                          <label for="file-input">
+                            <FaCamera style={{ width: "20px" }} />
+                          </label>
+
+                          <input
+                            id="file-input"
+                            type="file"
+                            onChange={this.fileSelectedHandler}
+                            style={{ display: "none" }}
+                          />
+                        </div>
+                      </button>
+                      <button
+                        style={{ background: "transparent" }}
+                        className="btn-upload ml-5 left-border"
+                      >
+                        <FaPhotoVideo />
+                      </button>
+                      <button
+                        style={{ background: "transparent" }}
+                        className="btn-upload ml-5 left-border"
+                        onClick={this.handleSubmit}
+
                       >
                         <FaPaperPlane />
                       </button>
@@ -385,145 +280,21 @@ class NewsFeed extends Component {
                 </Card>
               </div>
             </div>
+
             <Row>
-              <Col>
-                {this.state.post
-                  .filter((post) => post.user)
-                  .map((user, i) => {
-                    console.log(user.image);
-                    if (user.user)
-                      return (
-                        <>
-                          <Card body key={i} className="mt-2">
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                              }}
-                            >
-                              <p
-                                style={{ fontWeight: "700", fontSize: "14px" }}
-                              >
-                                <img
-                                  src={user.user.image}
-                                  style={{
-                                    width: "40px",
-                                    height: "40px",
-                                    borderRadius: "50%",
-                                    marginRight: "10px",
-                                  }}
-                                />{" "}
-                                {user.user.name}
-                              </p>
-
-                              <Dropdown>
-                                <Dropdown.Toggle
-                                  style={{
-                                    background: "none",
-                                    color: "#000",
-                                    border: "none",
-                                  }}
-                                ></Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                  <Dropdown.Item
-                                    onClick={() => this.open(user._id)}
-                                  >
-                                    Edit
-                                  </Dropdown.Item>
-
-                                  <Dropdown.Item
-                                    href="#/action-2"
-                                    onClick={() => this.deleteStatus(user._id)}
-                                  >
-                                    Delete
-                                  </Dropdown.Item>
-                                </Dropdown.Menu>
-                              </Dropdown>
-                              <Modal
-                                show={this.state.showModal}
-                                onHide={() => this.close()}
-                              >
-                                <Modal.Header closeButton>
-                                  <Modal.Title>Edit message</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                  <textarea
-                                    value={this.state.oldPostText}
-                                    onChange={this.sendPost}
-                                    style={{ width: "100%", border: "none" }}
-                                  ></textarea>
-                                </Modal.Body>
-
-                                <Modal.Footer>
-                                  <Button onClick={this.close}>Save</Button>
-                                </Modal.Footer>
-                              </Modal>
-                            </div>
-
-                            <small style={{ letterSpacing: "3px" }}>
-                              <FaPodcast className="mr-3" />
-                              {user.text}
-                            </small>
-                            <br></br>
-                            {user.image !== undefined && (
-                              <img src={user.image} />
-                            )}
-                            <div
-                              className="mt-4"
-                              style={{
-                                display: "flex",
-                                justifyContent: "flex-start",
-                                alignItems: "center",
-                              }}
-                            >
-                              <button
-                                className="btn-upload like-btn"
-                                onClick={() => this.addLikes(user._id)}
-                                style={{
-                                  background: "transparent",
-                                  display: "flex",
-                                  justifyContent: "space-between",
-                                  alignItems: "center",
-                                }}
-                              >
-                                {this.state.likes}
-                                <FaThumbsUp className="mr-2 ml-2" />
-                                Like
-                              </button>
-                              <button
-                                className="btn-upload "
-                                style={{ background: "transparent" }}
-                              >
-                                {" "}
-                                <FaComment className="mr-2" />
-                                Comment
-                              </button>
-                              <button
-                                className="btn-upload "
-                                style={{ background: "transparent" }}
-                              >
-                                <FaShare className="mr-2" />
-                                Share
-                              </button>
-                            </div>
-                          </Card>
-                          <Card.Footer
-                            style={{
-                              borderTop: "none",
-                              border: "1px solid #DFDFDF",
-                              fontSize: "12px",
-                            }}
-                          >
-                            Be the first to comment on this
-                          </Card.Footer>
-                        </>
-                      );
-                  })}
-              </Col>
+              {this.state.mypost.map((exp, i) => {
+                return (
+                  <MySinglePost obj={exp} key={i} fetchData={this.fetchData} />
+                );
+              })}
             </Row>
           </div>
           <div className="col-lg-3 col-md-12 col-sm-12 btn-trans">
+            {/* <Row>
+              {this.state.mypost.map((exp, i) => {
+                <MySinglePost obj={exp} key={i} />;
+              })}
+            </Row> */}
             <div className="row">
               <div className="col-lg-12 col-md-6 col-sm-12 top-marg">
                 <Card>
