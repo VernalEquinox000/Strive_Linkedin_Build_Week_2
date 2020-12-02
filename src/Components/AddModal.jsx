@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
+
 import {AddExperiece} from '../Api/experiences'
 export default class AddModal extends Component {
   state={
@@ -24,8 +25,7 @@ export default class AddModal extends Component {
   render() {
     return (
       <>
-      
-   
+
 
         <Modal
           {...this.props}
@@ -43,23 +43,31 @@ export default class AddModal extends Component {
                       <Form.Group>
                         <Row>
                           <Col>
+
                             <Form.Label>Role</Form.Label>
                             <Form.Control
                               type="text"
                               placeholder="Role"
                               required
                               id="role"
+
+                           
+
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
                           </Col>
                           <Col>
+
                             <Form.Label>company</Form.Label>
                             <Form.Control
                               type="text"
                               placeholder="company"
                               required
                               id="company"
+
+                            
+
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
@@ -69,6 +77,7 @@ export default class AddModal extends Component {
                       <Row>
                         <Col>
                           <Form.Group>
+
                             <Form.Label>startDate</Form.Label>
                             <Form.Control
                               type="date"
@@ -78,23 +87,31 @@ export default class AddModal extends Component {
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
+
                            
+                          
+
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group>
+
                             <Form.Label>description</Form.Label>
                             <Form.Control
                               type="text"
                               placeholder="description"
                               required
                               id="description"
+
+                            
+
                               onKeyDown={this.handleChange}
                               onChange={this.handleChange}
                             />
                           </Form.Group>
                         </Col>
                       </Row>
+
                     
                       <Form.Group>
                         <Form.Label>area</Form.Label>
@@ -103,10 +120,14 @@ export default class AddModal extends Component {
                           type="text"
                           required
                           id="area"
+
                           onKeyDown={this.handleChange}
                           onChange={this.handleChange}
                         />
+                       
                       </Form.Group>
+              
+              
 
                       <Button variant="primary" type="submit">
                         Submit

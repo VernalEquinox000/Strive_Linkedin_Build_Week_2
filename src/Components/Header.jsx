@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import Background from "../Assets/linkedin_bg.jpeg"
@@ -10,47 +11,46 @@ import ExperienceSection from './ExperienceSection'
 export default class Header extends Component {
 
     state = {
-        profile: null,
+        profile: [],
         editShow:false,
     };
 
-    
 
-    fetchProfile = async () => {
-        try {
-            const url = "https://striveschool-api.herokuapp.com/api/profile/me"
-            const response = await fetch(url, {
-                headers: {
-                    Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-                }
-            });
-        
-            const data = await response.json()
+
+  fetchProfile = async () => {
+    try {
+      const url = "https://striveschool-api.herokuapp.com/api/profile/me";
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        },
+      });
+
+      const data = await response.json();
+      
 
             this.setState({ profile: data })
         
                 
             
 
-            console.log(this.state.profile)
+      console.log(data);
 
-            console.log(this.state.profile.username)
-            
-            
-        } catch (err) {
-            console.log(err);
-        }
-    };
+      console.log(this.state.profile);
 
-    componentDidMount() {
-        this.fetchProfile();
+      console.log(this.state.profile.username);
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    render() {
+  componentDidMount() {
+    this.fetchProfile();
+  }
 
-        const { profile } = this.state
-        
-        if (!profile) return <></>
+  render() {
+    const { profile } = this.state;
+
 
         const { name, surname, title, area, bio, image } = profile
         
@@ -109,4 +109,5 @@ export default class Header extends Component {
             </div>
         )
     }
+
 }
