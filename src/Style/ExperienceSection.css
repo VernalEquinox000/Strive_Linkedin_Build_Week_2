@@ -11,6 +11,11 @@
 
   padding: 0;
 }
+
 .expBtn:hover {
   background-color: #eaf4fe !important;
+}
+
+.experience {
+  padding: 0 !important
 }
