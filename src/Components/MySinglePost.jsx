@@ -33,8 +33,7 @@ class MySinglePost extends React.Component {
                     flexDirection: "column",
                   }}
                 >
-                  {this.state.name.user.name}
-                  {this.state.name.user.surname}
+                  {this.state.name.user.name} {this.state.name.user.surname}
                 </p>
               </div>
               <div className="col-4 text-right" style={{ fontWeight: "700" }}>
