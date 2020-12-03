@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { AddPost, getAllPosts } from "../Api/post";
+import { Link } from "@material-ui/core";
 import {
   FaCamera,
   FaPhotoVideo,
@@ -36,8 +37,8 @@ export default class AddPostCard extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     console.log(AddPost);
-    const reponse = AddPost(this.state.body);
-
+    const response = await AddPost(this.state.body);
+    this.submitImg(response._id);
     this.props.fetchData();
   };
   fileSelectedHandler = (e) => {
@@ -45,8 +46,21 @@ export default class AddPostCard extends Component {
     data.append("post", e.target.files[0]);
     this.setState({ fileSelected: data });
   };
-  submitImg = (id) => {
+  submitImg = async (id) => {
     try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${id}`,
+        {
+          method: "POST",
+          body: this.state.fileSelected,
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          },
+        }
+      );
+      if (response.ok) {
+        alert("uploaded");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -77,19 +91,20 @@ export default class AddPostCard extends Component {
               >
                 <div class="image-upload" style={{ cursor: "pointer" }}>
                   <label for="file-input">
-                    <FaCamera
-                      style={{ width: "20px" }}
-                      onClick={() => this.fileRef.click()}
-                    />
+                    <Link>
+                      <input
+                        type="file"
+                        id="file"
+                        ref={(inputRef) => (this.fileRef = inputRef)}
+                        onChange={this.fileSelectedHandler}
+                        style={{ display: "none" }}
+                      />
+                      <FaCamera
+                        style={{ width: "20px" }}
+                        onClick={() => this.fileRef.click()}
+                      />
+                    </Link>
                   </label>
-
-                  <input
-                    id="file-input"
-                    type="file"
-                    ref={(inputRef) => (this.fileRef = inputRef)}
-                    onChange={this.fileSelectedHandler}
-                    style={{ display: "none" }}
-                  />
                 </div>
               </button>
               <button
