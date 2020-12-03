@@ -1,8 +1,27 @@
-export const getAllExperieces = async (id) => {
+export const getAllPosts = async () => {
   try {
-    const url = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
+    const url = `https://striveschool-api.herokuapp.com/api/posts/ `;
     const response = await fetch(url, {
       method: "GET",
+
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    return data.reverse();
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getSinglePost = async (postId) => {
+  try {
+    const url = `https://striveschool-api.herokuapp.com/api/posts/${postId} `;
+    const response = await fetch(url, {
+      method: "GET",
+
       headers: {
         Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
         "Content-Type": "application/json",
@@ -14,12 +33,9 @@ export const getAllExperieces = async (id) => {
     console.log(error);
   }
 };
-
-export const AddExperiece = async ({ id, body }) => {
-  if (!id || !body) return;
-
+export const AddPost = async (body) => {
   try {
-    const url = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
+    const url = `https://striveschool-api.herokuapp.com/api/posts/`;
     const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
@@ -33,9 +49,9 @@ export const AddExperiece = async ({ id, body }) => {
     console.log(err);
   }
 };
-export const EditExperieces = async (userId, body, expId) => {
+export const EditPost = async (postId, body) => {
   try {
-    const url = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    const url = `https://striveschool-api.herokuapp.com/api/posts/${postId}`;
     const response = await fetch(url, {
       method: "PUT",
       body: JSON.stringify(body),
@@ -45,14 +61,14 @@ export const EditExperieces = async (userId, body, expId) => {
       },
     });
     return response;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };
 
-export const DeleteExperieces = async (userId, expId) => {
+export const DeletePost = async (postId) => {
   try {
-    const url = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    const url = `https://striveschool-api.herokuapp.com/api/posts/${postId}`;
     const response = await fetch(url, {
       method: "DELETE",
 
