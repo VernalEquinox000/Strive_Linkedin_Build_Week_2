@@ -6,7 +6,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import Aside from "./Aside";
 import EditModalProfile from "./EditModalProfile";
 import ExperienceSection from "./ExperienceSection";
-
+import services from "../Api/auth";
 export default class Header extends Component {
   state = {
     profile: {},
@@ -21,16 +21,7 @@ export default class Header extends Component {
                 /> */
 
   fetchProfile = async () => {
-    try {
-      const url = "https://striveschool-api.herokuapp.com/api/profile/me";
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-        },
-      });
-
-      const data = await response.json();
-
+    services.fetchProfile((data) => {
       this.setState({ profile: data });
 
       console.log(data);
@@ -38,9 +29,7 @@ export default class Header extends Component {
       console.log(this.state.profile);
 
       console.log(this.state.profile.username);
-    } catch (err) {
-      console.log(err);
-    }
+    });
   };
 
   componentDidMount() {

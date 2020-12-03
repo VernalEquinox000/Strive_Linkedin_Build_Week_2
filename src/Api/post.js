@@ -44,7 +44,8 @@ export const AddPost = async (body) => {
         "Content-Type": "application/json",
       },
     });
-    return response;
+    const data = await response.json();
+    return data;
   } catch (err) {
     console.log(err);
   }
@@ -60,6 +61,7 @@ export const EditPost = async (postId, body) => {
         "Content-Type": "application/json",
       },
     });
+    const data = await response.json();
     return response;
   } catch (error) {
     console.log(error);
