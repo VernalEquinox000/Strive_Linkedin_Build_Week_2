@@ -13,7 +13,7 @@ export default class ExperienceSection extends Component {
   };
 
   componentDidMount = async () => {
-    const exp = await getAllExperieces(this.state.data._id);
+    const exp = await getAllExperieces(this.props.id);
     this.setState({ myexperiences: exp });
   };
 
