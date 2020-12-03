@@ -7,7 +7,13 @@ class EditModalProfile extends React.Component{
     state = {
         info: this.props.obj,
         modalShow:true,
-      }
+    }
+  
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.obj !== this.props.obj) {
+      this.setState({info:this.props.obj})
+    }
+  }
      handleChange = (e) => {
         this.setState({
         info: {
@@ -32,7 +38,10 @@ class EditModalProfile extends React.Component{
                 }
               );
         
-          
+          if (response.ok) {
+            this.props.fetchProfile()
+            this.props.onHide()
+          }
             
             
         } catch (err) {

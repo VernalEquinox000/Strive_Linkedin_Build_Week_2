@@ -11,10 +11,17 @@ import ExperienceSection from './ExperienceSection'
 export default class Header extends Component {
 
     state = {
-        profile: [],
+        profile: {},
         editShow:false,
     };
 
+
+    /* <SingleBook
+                  book={book}
+                  onClick={() =>
+                    this.setState({ displayModal: true, selectedBook: book })
+                  }
+                /> */
 
 
   fetchProfile = async () => {
@@ -99,7 +106,8 @@ export default class Header extends Component {
                     </Row>
                     <EditModalProfile obj={this.state.profile} 
                     show={this.state.editShow}
-                    onHide={() => this.setState({ editShow: false })}
+                            onHide={() => this.setState({ editShow: false })}
+                            fetchProfile ={this.fetchProfile}
                     
                     />
                 </Container>
