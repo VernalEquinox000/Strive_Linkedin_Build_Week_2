@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { AddPost, getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
+import AddPostCard from "./AddPostCard";
 import {
   Card,
   ListGroup,
@@ -40,26 +41,8 @@ class NewsFeed extends Component {
     users: [],
     user: "",
     oldPostText: "",
-    sendStatus: {
-      text: "",
-      image: null,
-    },
   };
 
-  handleChange = (e) => {
-    this.setState({
-      body: {
-        ...this.state.body,
-        [e.target.id]: e.target.value,
-      },
-    });
-  };
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(AddPost);
-    AddPost(this.state.body);
-    this.fetchData();
-  };
   fetchData = async () => {
     const exp = await getAllPosts();
     console.log("array", exp);
@@ -78,9 +61,6 @@ class NewsFeed extends Component {
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
-
-             
-
                 <Card className="left-side-newsfeed">
                   <Card.Body className="banner-profile">
                     {this.state.user &&
@@ -226,59 +206,7 @@ class NewsFeed extends Component {
 
           <div className="col-lg-6 col-md-12 col-sm-12 marg-top">
             <div className="row">
-              <div className="col-12">
-                <Card>
-                  <Card.Body
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <textarea
-                      style={{ flex: "0.8", border: "none" }}
-                      placeholder="Start a post"
-                      onKeyDown={this.handleChange}
-                      onChange={this.handleChange}
-                      type="text"
-                      name="text"
-                      id="text"
-                      required
-                    ></textarea>
-
-                    <div>
-                      <button
-                        style={{ background: "transparent" }}
-
-                        className="btn-upload"
-                      >
-                        <div class="image-upload" style={{ cursor: "pointer" }}>
-                          <label for="file-input">
-                            <FaCamera style={{ width: "20px" }} />
-                          </label>
-
-                          <input
-                            id="file-input"
-                            type="file"
-                            onChange={this.fileSelectedHandler}
-                            style={{ display: "none" }}
-                          />
-                        </div>
-                      </button>
-                      <button
-                        style={{ background: "transparent" }}
-                        className="btn-upload ml-5 left-border"
-                      >
-                        <FaPhotoVideo />
-                      </button>
-                      <button
-                        style={{ background: "transparent" }}
-                        className="btn-upload ml-5 left-border"
-                        onClick={this.handleSubmit}
-
-                      >
-                        <FaPaperPlane />
-                      </button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </div>
+              <AddPostCard fetchData={this.fetchData} />
             </div>
 
             <Row>
