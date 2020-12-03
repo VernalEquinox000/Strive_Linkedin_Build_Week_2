@@ -15,8 +15,8 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Header />
-      {/* <NewsFeed /> */}
+      {/* <Header /> */}
+      <NewsFeed />
       <Footer />
     </div>
   );
