@@ -14,12 +14,6 @@ export default class Header extends Component {
     editShow: false,
   };
 
-  /* <SingleBook
-                  book={book}
-                  onClick={() =>
-                    this.setState({ displayModal: true, selectedBook: book })
-                  }
-                /> */
 
   fetchProfile = async () => {
     try {
@@ -34,11 +28,8 @@ export default class Header extends Component {
 
       this.setState({ profile: data });
 
-      console.log(data);
+     
 
-      console.log(this.state.profile);
-
-      console.log(this.state.profile.username);
     } catch (err) {
       console.log(err);
     }
@@ -112,7 +103,8 @@ export default class Header extends Component {
                     <Card.Text>{`${bio}`}</Card.Text>
                   </Card.Body>
                 </Card>
-                            <ExperienceSection object={this.state.profile} id={this.props.match.params._id} />
+                           
+                            {this.state.profile._id ?  <ExperienceSection object={this.state.profile}  />: null}
               </Col>
               <Col xs={4}>
                 <Aside />

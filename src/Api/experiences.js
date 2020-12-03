@@ -1,5 +1,6 @@
 export const getAllExperieces = async (id) => {
   try {
+    console.log(id)
     const url = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
     const response = await fetch(url, {
       method: "GET",
@@ -17,6 +18,7 @@ export const getAllExperieces = async (id) => {
 
 export const AddExperiece = async ({ id, body }) => {
   if (!id || !body) return;
+  
 
   try {
     const url = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;

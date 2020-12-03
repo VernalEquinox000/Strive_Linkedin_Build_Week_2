@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { AddPost, getAllPosts } from "../Api/post";
+import {  getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
+ import AddPostModal from "./AddPostModal"
 import {
   Card,
   ListGroup,
@@ -34,7 +35,7 @@ class NewsFeed extends Component {
     postId: null,
     newPost: [],
     person: [],
-    body: null,
+    modalShow:false,
     image: "",
     showModal: false,
     users: [],
@@ -46,20 +47,7 @@ class NewsFeed extends Component {
     },
   };
 
-  handleChange = (e) => {
-    this.setState({
-      body: {
-        ...this.state.body,
-        [e.target.id]: e.target.value,
-      },
-    });
-  };
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(AddPost);
-    AddPost(this.state.body);
-    this.fetchData();
-  };
+ 
   fetchData = async () => {
     const exp = await getAllPosts();
     console.log("array", exp);
@@ -231,16 +219,14 @@ class NewsFeed extends Component {
                   <Card.Body
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <textarea
-                      style={{ flex: "0.8", border: "none" }}
-                      placeholder="Start a post"
-                      onKeyDown={this.handleChange}
-                      onChange={this.handleChange}
-                      type="text"
-                      name="text"
-                      id="text"
-                      required
-                    ></textarea>
+                    <AddPostModal  
+                        object={this.state.mypost}
+                        show={this.state.modalShow}
+                        onHide={() => this.setState({ modalShow: false })} />
+                    <Button onClick={() => this.setState({ modalShow: true })} >
+                    <div>Click</div>
+                   
+                    </Button>
 
                     <div>
                       <button
@@ -267,14 +253,7 @@ class NewsFeed extends Component {
                       >
                         <FaPhotoVideo />
                       </button>
-                      <button
-                        style={{ background: "transparent" }}
-                        className="btn-upload ml-5 left-border"
-                        onClick={this.handleSubmit}
-
-                      >
-                        <FaPaperPlane />
-                      </button>
+                 
                     </div>
                   </Card.Body>
                 </Card>

@@ -7,15 +7,15 @@ import {DeleteExperieces} from"../Api/experiences";
 import EditExpModal from './EditExpModal'
 export default class SingleExperience extends Component {
     state={
-        data: this.props.exp,
+    
         editShow: false,
-        userId:this.props.userId._id,
+        
     }
 
   DeleteExp = async ()=>{
   
-     const deleted = await DeleteExperieces(this.props.userId._id,this.props.exp._id)
-     console.log(this.state.data,this.state.userId)
+     const deleted = await DeleteExperieces(this.props.userId,this.props.exp._id)
+    
 
    
   }
@@ -41,7 +41,7 @@ export default class SingleExperience extends Component {
             <div>
               <h6>sexy beast management</h6>
 
-              <span>{this.state.data.area}</span>
+              <span>{this.props.exp.area}</span>
 
               <span>12 anni 7 mesi</span>
               <br />
@@ -65,8 +65,8 @@ export default class SingleExperience extends Component {
             </Button>
           </Col>
         </Row>
-       <EditExpModal object={this.state.data}
-            userid={this.state.userdId}
+       <EditExpModal object={this.props.exp}
+            userid={this.props.userdId}
           show={this.state.editShow}
           onHide={() => this.setState({ editShow: false })}/>
 

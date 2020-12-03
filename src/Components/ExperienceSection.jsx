@@ -7,21 +7,27 @@ import AddModal from "./AddModal";
 import { getAllExperieces } from "../Api/experiences";
 export default class ExperienceSection extends Component {
   state = {
-    data: this.props.object,
     editShow: false,
     myexperiences: null,
   };
 
   componentDidMount = async () => {
-    const exp = await getAllExperieces(this.props.id);
-    this.setState({ myexperiences: exp });
-  };
+    const id = this.props.object._id;
+    console.log(id);
+    if (!id || id === undefined) {
+      console.log("Failed to get id ", id);
+      return;
+    }
+    const exp = await getAllExperieces(id);
+    this.setState({myexperiences:exp})
+    console.log("mutooo")
+  }
 
   render() {
     return (
       <div>
         <AddModal
-          object={this.state.data}
+          object={this.props.object}
           show={this.state.editShow}
           onHide={() => this.setState({ editShow: false })}
         />
@@ -47,7 +53,7 @@ export default class ExperienceSection extends Component {
                       <SingleExperience
                         key={i}
                         exp={exp}
-                        userId={this.state.data}
+                        userId={this.props.object._id}
                       />
                     );
                   })

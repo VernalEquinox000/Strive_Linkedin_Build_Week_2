@@ -5,7 +5,7 @@ import {AddExperiece} from '../Api/experiences'
 export default class AddModal extends Component {
   state={
     body:null,
-    data:this.props.object,
+    
   }
   handleChange = (e) => {
     this.setState({
@@ -17,9 +17,10 @@ export default class AddModal extends Component {
   };
   handleSubmit = async (e) => {
     e.preventDefault();
-    AddExperiece({id:this.state.data._id,body:this.state.body})
-
-  }
+    const id = this.props.object.id;
+    const body = this.state.body;
+    await AddExperiece({ id, body });
+  };
   
 
   render() {
