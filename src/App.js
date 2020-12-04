@@ -29,6 +29,7 @@ function App() {
       <Router>
         <NavBar />
 
+
      
         <Route path="/profile/:_id" component={Header} />
 

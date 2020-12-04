@@ -1,10 +1,14 @@
 import React from "react";
-import { Col, Container, Row, Image } from "react-bootstrap";
+import { Col, Container, Row, Image, ListGroup, Button } from "react-bootstrap";
 import vid1 from "../Assets/vid1.png";
 import vid2 from "../Assets/vid2.png";
 import vid3 from "../Assets/vid3.png";
 import workingnibba from "../Assets/workingnibba.jpg";
+
+import { RiSendPlaneFill } from "react-icons/ri";
+
 import {Link} from "react-router-dom"
+
 import SmallAside from "./SmallAside";
 
 class Aside extends React.Component {
@@ -50,9 +54,37 @@ class Aside extends React.Component {
         <div className="usersDiv">
           <p className="divTitle">People also viewed</p>
 
-          {this.state.profiles.map((profile) => 
-            <Link to={'/profile/'+profile._id}><h1>{profile.name}</h1></Link>
-          )}
+          <ListGroup>
+            {this.state.profiles.map(profile => {
+              return (
+                <Row className="mb-3">
+                  <Col md="3">
+                    <img
+                      src={profile.image}
+                      style={{
+                        width: "55px",
+                        height: "55px",
+                        borderRadius: "100px",
+                      }}
+                      alt=""
+                    />
+                  </Col>
+                  <Col md="9" className="d-flex justify-content-between">
+                    <div className="d-inline-block">
+                      <h6>
+                        {profile.name} {profile.surname}
+                      </h6>
+
+                      <p>{profile.title}</p>
+                    </div>
+                    <Button className="rounde-circle p-0 buttonContact bg-white text-muted">
+                      <RiSendPlaneFill />
+                    </Button>
+                  </Col>
+                </Row>
+              );
+            })}
+          </ListGroup>
 
         </div>
         <div className="lrn-div">
