@@ -69,9 +69,9 @@ class NavBar extends Component {
             <Nav className="ml-auto">
               <Nav.Link className="flex flex-column" href="">
                 <FontAwesomeIcon icon={faHome} />
-                <Link to="/newsfeed/">
+                <Link to="/newsfeed">
                   <span>Home</span>
-                </Link>
+              </Link>
               </Nav.Link>
               <Nav.Link className="flex flex-column" href="#web">
                 <FontAwesomeIcon icon={faUserFriends} />
@@ -94,7 +94,7 @@ class NavBar extends Component {
               <div className="flex flex-column">
                 <Nav.Link href="#" className="nav-link">
                   <img src={user} alt="" className="userNavImg" />
-                  <Link to="/:_id">
+                  <Link to="/profile/me">
                     <span>
                       Me{" "}
                       <RiArrowDownSFill

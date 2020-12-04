@@ -58,7 +58,7 @@ class NewsFeed extends Component {
     this.fetchAuth();
   };
   fetchAuth = () => {
-    services.fetchProfile((data) => {
+    services.fetchProfile('me', (data) => {
       this.setState({ authUser: data });
     });
   };

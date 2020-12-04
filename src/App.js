@@ -28,10 +28,13 @@ function App() {
     <div className="App">
       <Router>
         <NavBar />
-        <Route path="/" exact component={Header} />
-        <Route path="/:_id" render = {(props) => <Header {...props} />} />
+        {/* <Route path="/" exact component={Header} /> */}
+        <Route path="/profile/:_id" component={Header} />
         <Route path="/newsfeed" component={NewsFeed} />
-        <Route path="/newsfeed" render = {(props) => <NewsFeed {...props} />} />
+        
+      
+        {/* <Route path="/" component={NewsFeed} />
+        <Route path="/" render = {(props) => <NewsFeed {...props} />} /> */}
         <Footer />
       </Router>
     </div>
@@ -47,3 +50,9 @@ export default App;
         <Route path="/newsfeed" component={NewsFeed} />
         <Footer />
       </Router> */}
+
+      {/* <Route
+        exact
+        path="/profile/:user"
+        render={(props) => <Profile {...props} />}
+      /> */}
