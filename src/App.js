@@ -27,8 +27,10 @@ function App() {
       <Footer /> /} */}
       <Router>
         <NavBar />
-        {/* <Route path="/" exact component={Header} />
-        <Route path="/:_id" component={Header} /> */}
+        {
+          <Route path="/" exact component={Header} />
+          /* <Route path="/:_id" component={Header} /> */
+        }
         <Route path="/newsfeed" component={NewsFeed} />
         <Footer />
       </Router>
