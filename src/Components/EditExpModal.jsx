@@ -1,11 +1,11 @@
 import React from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
-import {EditExperieces} from '../Api/experiences'
+import {EditExperieces,AddPhotoExp} from '../Api/experiences'
 
 class EditExpModal extends React.Component {
 
     state={
-      
+        file:null,
         data:this.props.object,
         userId:this.props.userid
       }
@@ -23,6 +23,24 @@ class EditExpModal extends React.Component {
         EditExperieces(this.state.userId,this.state.data,this.state.data._id)
     
       }
+      handleFile(e){
+
+        let file = e.target.files[0]
+
+        this.setState({file})
+    }
+    handleUpload(e){
+       let file = this.state.file
+
+       let formData = new FormData()
+
+       formData.append('profile',file)
+       formData.append('name',"Enis")
+       console.log(this.props.somedata._id)
+
+       AddPhotoExp(id,body,this.props.object._id)
+
+    }
       
     
       render() {
@@ -120,6 +138,12 @@ class EditExpModal extends React.Component {
                           <Button variant="primary" type="submit">
                             Submit
                           </Button>
+                          <Button variant="primary" type="submit">
+                            Submit
+                          </Button>
+                          <button type="button" onClick={(e)=>this.handleUpload(e)}>Upload</button>
+                          <label>Select File</label>
+                        <input type="file" name="file" onChange={(e)=>this.handleFile(e)} />
                         </Form>
                       </Col>
                     </Row>

@@ -17,7 +17,7 @@ export default class AddModal extends Component {
   };
   handleSubmit = async (e) => {
     e.preventDefault();
-    const id = this.props.object.id;
+    const id = this.props.object._id;
     const body = this.state.body;
     await AddExperiece({ id, body });
   };
@@ -36,7 +36,7 @@ export default class AddModal extends Component {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Edit
+              Add
               <Container>
                 <Row>
                   <Col>

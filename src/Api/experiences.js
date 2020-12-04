@@ -68,3 +68,28 @@ export const DeleteExperieces = async (userId, expId) => {
     console.log(error);
   }
 };
+
+export const AddPhotoExp = async(userId,expId,body)=>{
+
+  try{
+
+    const url =`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/:${expId}/picture`
+    const response = await (url,{
+      Method:"Post",
+      body,
+      headers:{
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+   
+}
+
+})
+
+
+return response
+
+}catch(error){
+console.log(error)
+}
+    
+}
+
