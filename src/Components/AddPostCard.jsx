@@ -68,13 +68,15 @@ export default class AddPostCard extends Component {
 
   render() {
     return (
-      <div className="col-12">
+      <div className="col-12" style={{ flexDirection: "column" }}>
         <Card>
-          <Card.Body
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
+          <Card.Body style={{ paddingBottom: "0" }}>
             <textarea
-              style={{ flex: "0.8", border: "none" }}
+              style={{
+                width: "100%",
+                borderRadius: "10px",
+                height: "35px",
+              }}
               placeholder="Start a post"
               // onKeyDown={this.handleChange}
               onChange={this.handleChange}
@@ -84,10 +86,28 @@ export default class AddPostCard extends Component {
               required
             ></textarea>
 
-            <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                padding: "10px 5px",
+              }}
+            >
               <button
-                style={{ background: "transparent" }}
+                style={{
+                  color: "#616160",
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  padding: "2px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginRight: "10px",
+                  marginLeft: "2px",
+                }}
                 className="btn-upload"
+                onClick={() => this.fileRef.click()}
               >
                 <div class="image-upload" style={{ cursor: "pointer" }}>
                   <label for="file-input">
@@ -100,25 +120,44 @@ export default class AddPostCard extends Component {
                         style={{ display: "none" }}
                       />
                       <FaCamera
-                        style={{ width: "20px" }}
-                        onClick={() => this.fileRef.click()}
+                        size="22"
+                        style={{
+                          color: "#616160",
+                          width: "30px",
+                          marginRight: "5px",
+                          marginTop: "2px",
+                        }}
                       />
                     </Link>
                   </label>
                 </div>
+                Photo
               </button>
+
               <button
-                style={{ background: "transparent" }}
-                className="btn-upload ml-5 left-border"
-              >
-                <FaPhotoVideo />
-              </button>
-              <button
-                style={{ background: "transparent" }}
-                className="btn-upload ml-5 left-border"
+                style={{
+                  color: "#616160",
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  padding: "2px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginRight: "10px",
+                  marginLeft: "2px",
+                }}
+                className="btn-upload ml-2 left-border"
                 onClick={this.handleSubmit}
               >
-                <FaPaperPlane />
+                <FaPaperPlane
+                  size="20"
+                  style={{
+                    width: "30px",
+                    marginRight: "4px",
+                    marginBottom: "2px",
+                  }}
+                />
+                Send
               </button>
             </div>
           </Card.Body>
