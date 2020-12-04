@@ -1,33 +1,27 @@
 import React, { Component } from "react";
 import { BsPencil } from "react-icons/bs";
 
-import {AiOutlineDelete} from 'react-icons/ai'
+import { AiOutlineDelete } from "react-icons/ai";
 import { Col, Row, Button } from "react-bootstrap";
-import {DeleteExperieces} from"../Api/experiences";
-import EditExpModal from './EditExpModal'
+import { DeleteExperieces } from "../Api/experiences";
+import EditExpModal from "./EditExpModal";
 export default class SingleExperience extends Component {
-    state={
-    
-        editShow: false,
-        
-    }
+  state = {
+    editShow: false,
+  };
 
-  DeleteExp = async ()=>{
-  
-     const deleted = await DeleteExperieces(this.props.userId,this.props.exp._id)
-    
-
-   
-  }
-
-
-
+  DeleteExp = async () => {
+    const deleted = await DeleteExperieces(
+      this.props.userId,
+      this.props.exp._id
+    );
+  };
 
   render() {
     return (
       <div className="listItem">
         <Row>
-          <Col className="pr-0">
+          <Col xl="1" className="pr-0">
             <img
               src="https://media-exp1.licdn.com/dms/image/C560BAQG6wKVXF9sMfg/company-logo_100_100/0?e=1614816000&v=beta&t=4B6v3D5AWcZN_TIL-mhM6tAkst2721kRR00SNwqy7Ys"
               alt=""
@@ -35,41 +29,43 @@ export default class SingleExperience extends Component {
             />
           </Col>
           <Col
-            className="pl-0 expDescription pb-3 d-flex justify-content-between"
+            className="pl-4 expDescription pb-3 d-flex justify-content-between"
             xl="11"
           >
             <div>
               <h6>sexy beast management</h6>
-
-              <span>{this.props.exp.area}</span>
-
+              <span>{this.props.exp.area}</span> <br />
               <span>{this.props.exp.role}</span>
               <br />
               <span>{this.props.exp.company}</span>
             </div>
 
-            <Button className=" expBtn" onClick={()=>this.setState({editShow:true})}>
+            <div className="d-flex flex-column">
+              <Button
+                className=" expBtn"
+                onClick={() => this.setState({ editShow: true })}
+              >
+                <BsPencil
+                  className=" d-inline-block"
+                  style={{ fontSize: "20px", color: "blue" }}
+                />
+              </Button>
 
-              <BsPencil
-                className=" d-inline-block"
-                style={{ fontSize: "20px", color: "blue" }}
-              />
-            </Button>
-
-            <Button className=" expBtn" onClick={()=>this.DeleteExp()}>
-              <AiOutlineDelete
-                className=" d-inline-block"
-                style={{ fontSize: "20px", color: "blue" }}
-
-              />
-            </Button>
+              <Button className=" expBtn" onClick={() => this.DeleteExp()}>
+                <AiOutlineDelete
+                  className=" d-inline-block"
+                  style={{ fontSize: "20px", color: "blue" }}
+                />
+              </Button>
+            </div>
           </Col>
         </Row>
-       <EditExpModal object={this.props.exp}
-            userid={this.props.userdId}
+        <EditExpModal
+          object={this.props.exp}
+          userid={this.props.userdId}
           show={this.state.editShow}
-          onHide={() => this.setState({ editShow: false })}/>
-
+          onHide={() => this.setState({ editShow: false })}
+        />
       </div>
     );
   }
