@@ -44,7 +44,10 @@ export const AddPost = async (body) => {
         "Content-Type": "application/json",
       },
     });
- 
+
+    const data = await response.json();
+    return data;
+
   } catch (err) {
     console.log(err);
   }
@@ -60,6 +63,7 @@ export const EditPost = async (postId, body) => {
         "Content-Type": "application/json",
       },
     });
+    const data = await response.json();
     return response;
   } catch (error) {
     console.log(error);
@@ -84,6 +88,7 @@ export const DeletePost = async (postId) => {
 };
 
 
+
 export const UploadMyPhotoPost = async (postId,body)=>{
 
     try{
@@ -101,3 +106,22 @@ export const UploadMyPhotoPost = async (postId,body)=>{
     }
     
 }
+
+export const UploadMyPhoto = async (userId, body) => {
+  try {
+    const url = `https://striveschool-api.herokuapp.com/api/profile/${userId}/picture`;
+
+    let response = await fetch(url, {
+      method: "POST",
+      body,
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+

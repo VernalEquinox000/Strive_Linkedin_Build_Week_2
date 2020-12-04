@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {  getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
  import AddPostModal from "./AddPostModal"
+import AddPostCard from "./AddPostCard";
 import {
   Card,
   ListGroup,
@@ -27,7 +28,7 @@ import {
   FaBookmark,
   FaNetworkWired,
 } from "react-icons/fa";
-
+import services from "../Api/auth";
 class NewsFeed extends Component {
   state = {
     mypost: [],
@@ -39,24 +40,27 @@ class NewsFeed extends Component {
     image: "",
     showModal: false,
     users: [],
-    user: "",
+    user: {},
+    authUser: {},
     oldPostText: "",
-    sendStatus: {
-      text: "",
-      image: null,
-    },
   };
 
- 
+
   fetchData = async () => {
     const exp = await getAllPosts();
     console.log("array", exp);
     console.log(this.state.newsFeed);
     console.log(this.state.mypost);
-    this.setState({ mypost: exp });
+    this.setState({ mypost: exp.slice(0, 20) });
   };
   componentDidMount = async () => {
     this.fetchData();
+    this.fetchAuth();
+  };
+  fetchAuth = () => {
+    services.fetchProfile((data) => {
+      this.setState({ authUser: data });
+    });
   };
 
   render() {
@@ -66,55 +70,50 @@ class NewsFeed extends Component {
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
-
-             
-
                 <Card className="left-side-newsfeed">
                   <Card.Body className="banner-profile">
-                    {this.state.user &&
+                    {/* {this.state.user &&
                       this.state.users.slice(0, 1).map((user, i) => {
-                        return (
-                          <Col key={i}>
-                            {user.image === undefined || user.image === "" ? (
-                              <img
+                        return ( */}
+                    <Col>
+                      {/* {user.image === undefined || user.image === "" ? ( */}
+                      {/* <img
                                 className="placeholder-img"
                                 src="https://cdn5.vectorstock.com/i/thumb-large/95/64/default-placeholder-businesswoman-half-length-por-vector-20889564.jpg"
                                 className="card-img img-fluid"
                                 alt="image"
                               />
-                            ) : (
-                              <div
-                                style={{
-                                  position: "absolute",
-                                  top: "20px",
-                                  left: "35px",
-                                }}
-                              >
-                                <img
-                                  className="profile-img mb-2"
-                                  src={this.state.user.image}
-                                />
+                            ) : ( */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "20px",
+                          left: "35px",
+                        }}
+                      >
+                        <img
+                          className="profile-img mb-2"
+                          src={this.state.authUser.image}
+                        />
 
-                                <div
-                                  style={{
-                                    lineHeight: "0.9",
-                                    margin: "0 auto",
-                                  }}
-                                >
-                                  <h6
-                                    style={{ fontWeight: "700", width: "100%" }}
-                                  >
-                                    Welcome, {this.state.user.name}
-                                  </h6>
-                                  <small style={{ fontWeight: "500" }}>
-                                    {this.state.user.bio}
-                                  </small>
-                                </div>
-                              </div>
-                            )}
-                          </Col>
-                        );
-                      })}
+                        <div
+                          style={{
+                            lineHeight: "0.9",
+                            margin: "0 auto",
+                          }}
+                        >
+                          <h6 style={{ fontWeight: "700", width: "100%" }}>
+                            Welcome, {this.state.authUser.name}
+                          </h6>
+                          <small style={{ fontWeight: "500" }}>
+                            {this.state.user.bio}
+                          </small>
+                        </div>
+                      </div>
+                      {/* )} */}
+                    </Col>
+                    {/* );
+                      })} */}
                   </Card.Body>
 
                   <ListGroup
@@ -214,56 +213,20 @@ class NewsFeed extends Component {
 
           <div className="col-lg-6 col-md-12 col-sm-12 marg-top">
             <div className="row">
-              <div className="col-12">
-                <Card>
-                  <Card.Body
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <AddPostModal  
-                        object={this.state.mypost}
-                        show={this.state.modalShow}
-                        onHide={() => this.setState({ modalShow: false })} />
-                    <Button onClick={() => this.setState({ modalShow: true })} >
-                    <div>Click</div>
-                   
-                    </Button>
 
-                    <div>
-                      <button
-                        style={{ background: "transparent" }}
+              <AddPostCard fetchData={this.fetchData} />
 
-                        className="btn-upload"
-                      >
-                        <div class="image-upload" style={{ cursor: "pointer" }}>
-                          <label for="file-input">
-                            <FaCamera style={{ width: "20px" }} />
-                          </label>
-
-                          <input
-                            id="file-input"
-                            type="file"
-                            onChange={this.fileSelectedHandler}
-                            style={{ display: "none" }}
-                          />
-                        </div>
-                      </button>
-                      <button
-                        style={{ background: "transparent" }}
-                        className="btn-upload ml-5 left-border"
-                      >
-                        <FaPhotoVideo />
-                      </button>
-                 
-                    </div>
-                  </Card.Body>
-                </Card>
-              </div>
             </div>
 
             <Row>
               {this.state.mypost.map((exp, i) => {
                 return (
-                  <MySinglePost obj={exp} key={i} fetchData={this.fetchData} />
+                  <MySinglePost
+                    obj={exp}
+                    key={exp._id}
+                    fetchData={this.fetchData}
+                    authUser={this.state.authUser}
+                  />
                 );
               })}
             </Row>

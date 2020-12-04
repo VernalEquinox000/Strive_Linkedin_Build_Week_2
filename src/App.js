@@ -9,22 +9,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/Navbar.css";
 import "./Style/ExperienceSection.css";
 import "./Style/NewsFeed.css";
+import "./Style/Sidebar.css";
 import "./Style/App.css";
 
 function App() {
   return (
     <div className="App">
-      {/* <NavBar />
-      <Header />
+
+      <NavBar />
+      {/* <Header /> */}
       <NewsFeed />
-      <Footer /> */}
-      <Router>
-        <NavBar />
-        {/* <Route path="/" exact component={Header} /> */}
-        <Route path="/" exact component={Header} />
-        <Route path="/newsfeed" component={NewsFeed} />
-        <Footer />
-      </Router>
+      <Footer />
+
     </div>
   );
 }

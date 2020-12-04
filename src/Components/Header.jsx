@@ -7,6 +7,7 @@ import Aside from "./Aside";
 import EditModalProfile from "./EditModalProfile";
 import ExperienceSection from "./ExperienceSection";
 import UploadPhoto from "./UploadPhoto"
+import services from "../Api/auth";
 
 export default class Header extends Component {
   state = {
@@ -16,23 +17,17 @@ export default class Header extends Component {
 
 
   fetchProfile = async () => {
-    try {
-      const url = "https://striveschool-api.herokuapp.com/api/profile/me";
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-        },
-      });
-
-      const data = await response.json();
-
+    services.fetchProfile((data) => {
       this.setState({ profile: data });
 
      
 
-    } catch (err) {
-      console.log(err);
-    }
+
+      console.log(this.state.profile);
+
+      console.log(this.state.profile.username);
+    });
+
   };
 
   componentDidMount() {

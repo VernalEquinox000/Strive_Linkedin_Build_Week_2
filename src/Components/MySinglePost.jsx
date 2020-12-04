@@ -23,7 +23,7 @@ class MySinglePost extends React.Component {
                 <img
                   className="mr-3"
                   style={{ width: "40px", height: "40px" }}
-                  src=""
+                  src={this.state.name.user.image}
                 />
 
                 <p
@@ -38,9 +38,12 @@ class MySinglePost extends React.Component {
               </div>
               <div className="col-4 text-right" style={{ fontWeight: "700" }}>
                 {" "}
-                <Button onClick={() => this.setState({ showModal: true })}>
-                  ...
-                </Button>
+                {this.props.authUser &&
+                  this.props.authUser._id === this.state.name.user._id && (
+                    <Button onClick={() => this.setState({ showModal: true })}>
+                      ...
+                    </Button>
+                  )}
                 <EditPostModal
                   fetchData={this.props.fetchData}
                   object={this.state.postInfo}
@@ -53,6 +56,7 @@ class MySinglePost extends React.Component {
           </Card.Body>
 
           <Card.Footer>
+            <img style={{ width: "100%" }} src={this.props.obj.image}></img>
             <p
               style={{
                 fontWeight: "500",
