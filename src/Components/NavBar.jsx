@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import {
   Container,
   Navbar,
@@ -25,6 +24,7 @@ import {
 
 import logo from "../Assets/LI-In-Bug.png";
 import user from "../Assets/97.jpg";
+import {withRouter, Link} from "react-router-dom"
 
 class NavBar extends Component {
   render() {
@@ -61,7 +61,7 @@ class NavBar extends Component {
               id="basic-navbar-nav"
               className="pb-2 pt-1 py-xl-0"
             >
-              <Nav className="ml-auto">
+              {/* <Nav className="ml-auto">
                 <Nav.Link className="flex flex-column" href="#home">
                   <FontAwesomeIcon
                     icon={faHome}
@@ -91,8 +91,29 @@ class NavBar extends Component {
                     className="d-none d-xl-block"
                   />
                   <span className="py-1 pt-md-0">Messages</span>
-                </Nav.Link>
+                </Nav.Link> */}
 
+
+           
+            <Nav className="ml-auto">
+              <Nav.Link className="flex flex-column" href="">
+                <FontAwesomeIcon icon={faHome} />
+                <Link to="/newsfeed">
+                  <span>Home</span>
+              </Link>
+              </Nav.Link>
+              <Nav.Link className="flex flex-column" href="#web">
+                <FontAwesomeIcon icon={faUserFriends} />
+                <span>Web</span>
+              </Nav.Link>
+              <Nav.Link className="flex flex-column" href="#work">
+                <FontAwesomeIcon icon={faBriefcase} />
+                <span>Work</span>
+              </Nav.Link>
+              <Nav.Link className="flex flex-column" href="#messages">
+                <FontAwesomeIcon icon={faCommentDots} />
+                <span>Messages</span>
+              </Nav.Link>
                 <Nav.Link className="flex flex-column" href="#notifications">
                   <FontAwesomeIcon
                     icon={faBell}
@@ -101,9 +122,10 @@ class NavBar extends Component {
                   <span className="py-1 pt-md-0">Notifications</span>
                 </Nav.Link>
 
+
                 <div className="flex flex-column">
                   <Nav.Link href="#" className="nav-link">
-                    <img
+                    {/* <img
                       src={user}
                       alt=""
                       className="userNavImg d-none d-xl-block"
@@ -116,7 +138,17 @@ class NavBar extends Component {
                           style={{ fontSize: "17px" }}
                         />
                       </span>
-                    </Link>
+                    </Link> */}
+                    <img src={user} alt="" className="userNavImg" />
+                  <Link to="/profile/me">
+                    <span>
+                      Me{" "}
+                      <RiArrowDownSFill
+                        className="m-0 p-0 d-inline-block"
+                        style={{ fontSize: "17px" }}
+                      />
+                    </span>
+                  </Link>
                   </Nav.Link>
                 </div>
               </Nav>
@@ -130,6 +162,7 @@ class NavBar extends Component {
                       style={{ fontSize: "17px" }}
                     />
                   </span>
+
                 </Nav.Link>
                 <Nav.Link
                   href="#"
@@ -149,4 +182,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

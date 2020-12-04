@@ -1,7 +1,7 @@
 export default {
-  fetchProfile: async (callbak) => {
+  fetchProfile: async (id, callbak) => {
     try {
-      const url = "https://striveschool-api.herokuapp.com/api/profile/me";
+      const url = "https://striveschool-api.herokuapp.com/api/profile/"+id;
       const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,

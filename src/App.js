@@ -20,18 +20,22 @@ function App() {
     //   <NewsFeed />
     //   <Footer />
     // </div>
+    // <NavBar />
+    // <Header />
+    // <NewsFeed />
+    // <Footer /> 
+
     <div className="App">
-      {/* <NavBar />
-      <Header />
-      <NewsFeed />
-      <Footer /> /} */}
       <Router>
         <NavBar />
-        {
-          <Route path="/" exact component={Header} />
-          /* <Route path="/:_id" component={Header} /> */
-        }
+
+
+     
+        <Route path="/profile/:_id" component={Header} />
+
         <Route path="/newsfeed" component={NewsFeed} />
+        
+    
         <Footer />
       </Router>
     </div>

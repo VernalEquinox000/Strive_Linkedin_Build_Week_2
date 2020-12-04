@@ -4,7 +4,11 @@ import vid1 from "../Assets/vid1.png";
 import vid2 from "../Assets/vid2.png";
 import vid3 from "../Assets/vid3.png";
 import workingnibba from "../Assets/workingnibba.jpg";
+
 import { RiSendPlaneFill } from "react-icons/ri";
+
+import {Link} from "react-router-dom"
+
 import SmallAside from "./SmallAside";
 
 class Aside extends React.Component {
@@ -21,19 +25,22 @@ class Aside extends React.Component {
         },
       });
       const data = await response.json();
-      this.setState({ profiles: data.slice(0, 6) });
+      this.setState({ profiles: data.slice(0, 4) });
+      console.log(this.state.profiles)
     } catch (error) {
       console.log(error);
     }
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchProfile();
+    
+    
   }
 
   render() {
     console.log(this.state.profiles);
-    console.log(this.state.profiles2);
+
     return (
       <>
         <div>
@@ -46,6 +53,7 @@ class Aside extends React.Component {
         </div>
         <div className="usersDiv">
           <p className="divTitle">People also viewed</p>
+
           <ListGroup>
             {this.state.profiles.map(profile => {
               return (
@@ -77,6 +85,7 @@ class Aside extends React.Component {
               );
             })}
           </ListGroup>
+
         </div>
         <div className="lrn-div">
           <svg

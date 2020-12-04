@@ -16,7 +16,9 @@ export default class Header extends Component {
   };
 
   fetchProfile = async () => {
-    services.fetchProfile(data => {
+
+    const id = this.props.match.params._id==="me"? 'me' : this.props.match.params._id
+    services.fetchProfile(id, (data) => {
       this.setState({ profile: data });
 
       console.log(this.state.profile);
@@ -24,9 +26,36 @@ export default class Header extends Component {
       console.log(this.state.profile.username);
     });
   };
-
+  tryParam = async () => {
+    let parameters = this.props.match.params._id
+    console.log(parameters)
+  }
+/*   //////////////
+  fetchUsers = async () => {
+    try {
+      const url = "https://striveschool-api.herokuapp.com/api/profile/";
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        },
+      });
+      const data = await response.json();
+      this.setState({ profiles: data.slice(0, 6) });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  ///////////// */
+  
   componentDidMount() {
     this.fetchProfile();
+    this.tryParam();
+
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.fetchProfile()
+    }
   }
 
   render() {
@@ -90,7 +119,8 @@ export default class Header extends Component {
                 </Card>
 
                 {this.state.profile._id ? (
-                  <ExperienceSection object={this.state.profile} />
+                  //<ExperienceSection object={this.state.profile} />
+                  <ExperienceSection object={this.state.profile} id={this.props.match.params._id==="me"? this.state.profile._id : this.props.match.params._id} />
                 ) : null}
               </Col>
               <Col xs={4}>
