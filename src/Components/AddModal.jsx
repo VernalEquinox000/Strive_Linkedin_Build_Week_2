@@ -15,32 +15,7 @@ export default class AddModal extends Component {
     this.fileRef = React.createRef();
   }
 
-//   handleFile(e){
 
-//     let file = e.target.files[0]
-
-//     this.setState({file})
-// }
-// handleUpload(e){
-//    let file = this.state.file
-
-//    let formData = new FormData()
-
-//    formData.append('profile',file)
-//    formData.append('name',"Enis")
-//    console.log(this.props.somedata._id)
-
-  //  AddPhotoExp(id,body,this.props.object._id)
-//   fetchData = async () => {
-//     const exp = await getAllExperieces();
-//     console.log("array", exp);
-//     console.log(this.state.newsFeed);
-//     console.log(this.state.mypost);
-//     this.setState({ mypost: exp.slice(0, 20) });
-//   };
-
-
-// }
   handleChange = (e) => {
     this.setState({
       body: {
