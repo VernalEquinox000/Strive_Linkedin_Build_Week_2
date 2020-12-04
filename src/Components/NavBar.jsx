@@ -61,7 +61,7 @@ class NavBar extends Component {
               id="basic-navbar-nav"
               className="pb-2 pt-1 py-xl-0"
             >
-              <Nav className="ml-auto">
+              {/* <Nav className="ml-auto">
                 <Nav.Link className="flex flex-column" href="#home">
                   <FontAwesomeIcon
                     icon={faHome}
@@ -91,7 +91,7 @@ class NavBar extends Component {
                     className="d-none d-xl-block"
                   />
                   <span className="py-1 pt-md-0">Messages</span>
-                </Nav.Link>
+                </Nav.Link> */}
 
 
            
@@ -125,7 +125,7 @@ class NavBar extends Component {
 
                 <div className="flex flex-column">
                   <Nav.Link href="#" className="nav-link">
-                    <img
+                    {/* <img
                       src={user}
                       alt=""
                       className="userNavImg d-none d-xl-block"
@@ -138,14 +138,8 @@ class NavBar extends Component {
                           style={{ fontSize: "17px" }}
                         />
                       </span>
-                    </Link>
-                  </Nav.Link>
-                </div>
-              </Nav>
-              <Nav className="second-nav">
-                <Nav.Link href="#" className="nav-link">
-
-                  <img src={user} alt="" className="userNavImg" />
+                    </Link> */}
+                    <img src={user} alt="" className="userNavImg" />
                   <Link to="/profile/me">
                     <span>
                       Me{" "}
@@ -155,7 +149,11 @@ class NavBar extends Component {
                       />
                     </span>
                   </Link>
-
+                  </Nav.Link>
+                </div>
+              </Nav>
+              <Nav className="second-nav">
+                <Nav.Link href="#" className="nav-link">
                   <CgMenuGridR className="d-none d-xl-block" />
                   <span className="py-1 pt-md-0">
                     Product{" "}
