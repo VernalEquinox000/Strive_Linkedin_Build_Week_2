@@ -38,7 +38,7 @@ class EditExpModal extends React.Component {
        formData.append('name',"Enis")
        console.log(this.props.somedata._id)
 
-       AddPhotoExp(id,body,this.props.object._id)
+      //  AddPhotoExp(id,body,this.props.object._id)
 
     }
       

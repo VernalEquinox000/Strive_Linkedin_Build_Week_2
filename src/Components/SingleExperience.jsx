@@ -43,9 +43,9 @@ export default class SingleExperience extends Component {
 
               <span>{this.props.exp.area}</span>
 
-              <span>12 anni 7 mesi</span>
+              <span>{this.props.exp.role}</span>
               <br />
-              <span>Los Angeles</span>
+              <span>{this.props.exp.company}</span>
             </div>
 
             <Button className=" expBtn" onClick={()=>this.setState({editShow:true})}>
