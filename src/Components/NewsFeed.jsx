@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { AddPost, getAllPosts } from "../Api/post";
+import {  getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
+ import AddPostModal from "./AddPostModal"
 import AddPostCard from "./AddPostCard";
 import {
   Card,
@@ -35,7 +36,7 @@ class NewsFeed extends Component {
     postId: null,
     newPost: [],
     person: [],
-    body: null,
+    modalShow:false,
     image: "",
     showModal: false,
     users: [],
@@ -43,6 +44,7 @@ class NewsFeed extends Component {
     authUser: {},
     oldPostText: "",
   };
+
 
   fetchData = async () => {
     const exp = await getAllPosts();
@@ -211,7 +213,9 @@ class NewsFeed extends Component {
 
           <div className="col-lg-6 col-md-12 col-sm-12 marg-top">
             <div className="row">
+
               <AddPostCard fetchData={this.fetchData} />
+
             </div>
 
             <Row>

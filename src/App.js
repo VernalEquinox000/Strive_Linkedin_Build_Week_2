@@ -15,10 +15,12 @@ import "./Style/App.css";
 function App() {
   return (
     <div className="App">
+
       <NavBar />
       {/* <Header /> */}
       <NewsFeed />
       <Footer />
+
     </div>
   );
 }

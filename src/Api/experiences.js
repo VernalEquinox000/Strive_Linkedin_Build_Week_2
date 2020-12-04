@@ -1,5 +1,6 @@
 export const getAllExperieces = async (id) => {
   try {
+    console.log(id)
     const url = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
     const response = await fetch(url, {
       method: "GET",
@@ -17,6 +18,7 @@ export const getAllExperieces = async (id) => {
 
 export const AddExperiece = async ({ id, body }) => {
   if (!id || !body) return;
+  
 
   try {
     const url = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
@@ -66,3 +68,28 @@ export const DeleteExperieces = async (userId, expId) => {
     console.log(error);
   }
 };
+
+export const AddPhotoExp = async(userId,expId,body)=>{
+
+  try{
+
+    const url =`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/:${expId}/picture`
+    const response = await (url,{
+      Method:"Post",
+      body,
+      headers:{
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+   
+}
+
+})
+
+
+return response
+
+}catch(error){
+console.log(error)
+}
+    
+}
+

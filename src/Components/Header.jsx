@@ -6,30 +6,28 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import Aside from "./Aside";
 import EditModalProfile from "./EditModalProfile";
 import ExperienceSection from "./ExperienceSection";
+import UploadPhoto from "./UploadPhoto"
 import services from "../Api/auth";
+
 export default class Header extends Component {
   state = {
     profile: {},
     editShow: false,
   };
 
-  /* <SingleBook
-                  book={book}
-                  onClick={() =>
-                    this.setState({ displayModal: true, selectedBook: book })
-                  }
-                /> */
 
   fetchProfile = async () => {
     services.fetchProfile((data) => {
       this.setState({ profile: data });
 
-      console.log(data);
+     
+
 
       console.log(this.state.profile);
 
       console.log(this.state.profile.username);
     });
+
   };
 
   componentDidMount() {
@@ -69,7 +67,8 @@ export default class Header extends Component {
                         fontWeight: "bolder",
                         paddingTop: "100px",
                       }}
-                    >
+                                    >
+                                        <UploadPhoto somedata={this.state.profile} />
                       {`${name} ${surname}`}{" "}
                       <FontAwesomeIcon
                         icon={faEdit}
@@ -99,7 +98,8 @@ export default class Header extends Component {
                     <Card.Text>{`${bio}`}</Card.Text>
                   </Card.Body>
                 </Card>
-                <ExperienceSection object={this.state.profile} />
+                           
+                            {this.state.profile._id ?  <ExperienceSection object={this.state.profile}  />: null}
               </Col>
               <Col xs={4}>
                 <Aside />
