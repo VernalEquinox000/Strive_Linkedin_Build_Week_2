@@ -93,3 +93,22 @@ console.log(error)
     
 }
 
+
+export const getSingleExperience = async (userId,expId) => {
+  try {
+    
+    const url = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
