@@ -23,6 +23,7 @@ import {
 
 import logo from "../Assets/LI-In-Bug.png";
 import user from "../Assets/97.jpg";
+import {withRouter, Link} from "react-router-dom"
 
 class NavBar extends Component {
   render() {
@@ -120,4 +121,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
