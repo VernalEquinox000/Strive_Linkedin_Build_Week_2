@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {  getAllPosts } from "../Api/post";
+import { getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
- import AddPostModal from "./AddPostModal"
+import AddPostModal from "./AddPostModal";
 import AddPostCard from "./AddPostCard";
 import {
   Card,
@@ -14,20 +14,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
-import {
-  FaHashtag,
-  FaCamera,
-  FaPhotoVideo,
-  FaPaperPlane,
-  FaShare,
-  FaComment,
-  FaThumbsUp,
-  FaInfo,
-  FaPodcast,
-  FaSquare,
-  FaBookmark,
-  FaNetworkWired,
-} from "react-icons/fa";
+import { FaHashtag, FaBookmark, FaHeart } from "react-icons/fa";
 import services from "../Api/auth";
 class NewsFeed extends Component {
   state = {
@@ -36,7 +23,7 @@ class NewsFeed extends Component {
     postId: null,
     newPost: [],
     person: [],
-    modalShow:false,
+    modalShow: false,
     image: "",
     showModal: false,
     users: [],
@@ -44,7 +31,6 @@ class NewsFeed extends Component {
     authUser: {},
     oldPostText: "",
   };
-
 
   fetchData = async () => {
     const exp = await getAllPosts();
@@ -58,19 +44,22 @@ class NewsFeed extends Component {
     this.fetchAuth();
   };
   fetchAuth = () => {
-    services.fetchProfile((data) => {
+    services.fetchProfile('me', (data) => {
       this.setState({ authUser: data });
     });
   };
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
+      <div className="container ">
+        <div className="row mt-1">
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
-                <Card className="left-side-newsfeed">
+                <Card
+                  className="left-side-newsfeed"
+                  style={{ borderRadius: "10px" }}
+                >
                   <Card.Body className="banner-profile">
                     {/* {this.state.user &&
                       this.state.users.slice(0, 1).map((user, i) => {
@@ -87,12 +76,12 @@ class NewsFeed extends Component {
                       <div
                         style={{
                           position: "absolute",
-                          top: "20px",
-                          left: "35px",
+                          top: "10px",
+                          left: "45px",
                         }}
                       >
                         <img
-                          className="profile-img mb-2"
+                          className="profile-img mb-2 "
                           src={this.state.authUser.image}
                         />
 
@@ -102,18 +91,17 @@ class NewsFeed extends Component {
                             margin: "0 auto",
                           }}
                         >
-                          <h6 style={{ fontWeight: "700", width: "100%" }}>
-                            Welcome, {this.state.authUser.name}
+                          <h6 style={{ fontWeight: "500", width: "100%" }}>
+                            {this.state.authUser.name}
+                            {this.state.authUser.surname}
                           </h6>
-                          <small style={{ fontWeight: "500" }}>
-                            {this.state.user.bio}
+                          <small style={{ fontWeight: "300" }}>
+                            {this.state.authUser.title}
                           </small>
                         </div>
+                        <hr />
                       </div>
-                      {/* )} */}
                     </Col>
-                    {/* );
-                      })} */}
                   </Card.Body>
 
                   <ListGroup
@@ -125,11 +113,10 @@ class NewsFeed extends Component {
                       borderTop: "1px solid #66666",
                     }}
                   >
-                    <ListGroupItem style={{ lineHeight: "0.5" }}>
+                    <ListGroupItem>
                       <p
                         className="pt-2"
                         style={{
-                          lineHeight: "0.1",
                           color: "#666666",
                           display: "flex",
                           justifyContent: "space-between",
@@ -195,9 +182,38 @@ class NewsFeed extends Component {
                         +
                       </small>
                     </p>
-                    <p style={{ fontWeight: "700", color: "#0073B1" }}>
+                    <p
+                      style={{
+                        fontWeight: "700",
+                        color: "#0073B1",
+                        marginBottom: "4px",
+                      }}
+                    >
                       Followed Hashtags
                     </p>
+                    <ul
+                      className="list-unstyled"
+                      style={{ color: "#666666", fontWeight: "700" }}
+                    >
+                      <li>
+                        <FaHashtag /> FuckYouGitHub
+                      </li>
+                      <li>
+                        <FaHeart /> LuisSavedOurAss
+                      </li>
+                      <li>
+                        <FaHashtag /> Yeeet
+                      </li>
+                      <li>
+                        <FaHeart /> Team QueenTetiana
+                      </li>
+                      <li>
+                        <FaHashtag /> SexyBeast
+                      </li>
+                      <li>
+                        <FaHeart /> BRRRRRRR
+                      </li>
+                    </ul>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem
@@ -213,9 +229,7 @@ class NewsFeed extends Component {
 
           <div className="col-lg-6 col-md-12 col-sm-12 marg-top">
             <div className="row">
-
               <AddPostCard fetchData={this.fetchData} />
-
             </div>
 
             <Row>
@@ -239,7 +253,7 @@ class NewsFeed extends Component {
             </Row> */}
             <div className="row">
               <div className="col-lg-12 col-md-6 col-sm-12 top-marg">
-                <Card>
+                <Card style={{ borderRadius: "10px" }}>
                   <Card.Body>
                     <p
                       style={{
@@ -252,7 +266,7 @@ class NewsFeed extends Component {
                     </p>
                     <div className="row">
                       <div
-                        className="col-8"
+                        className="col-6"
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
@@ -263,15 +277,18 @@ class NewsFeed extends Component {
                           style={{ width: "40px" }}
                           src="https://www.corsinvest.it/wp-content/uploads/2019/10/github-logo.png"
                         />
-                        <h6 className="ml-1" style={{ fontSize: "12px" }}>
+                        <h6 className="ml-3 mt-2" style={{ fontSize: "15px" }}>
                           GitHub
                         </h6>
                       </div>
-                      <div className="col-4">
+                      <div
+                        className="col-6 mt-2"
+                        style={{ textAlign: "center" }}
+                      >
                         <button
                           style={{
                             border: "1px solid rgb(0, 115, 177)",
-                            borderRadius: "2px",
+                            borderRadius: "4px",
                             color: "rgb(0, 115, 177)",
                           }}
                         >
@@ -281,7 +298,7 @@ class NewsFeed extends Component {
                     </div>
                     <div className="row pt-3">
                       <div
-                        className="col-8"
+                        className="col-6"
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
@@ -292,15 +309,18 @@ class NewsFeed extends Component {
                           style={{ width: "40px" }}
                           src="https://www.corsinvest.it/wp-content/uploads/2019/10/github-logo.png"
                         />
-                        <h6 className="ml-1" style={{ fontSize: "12px" }}>
+                        <h6 className="ml-3 mt-2" style={{ fontSize: "15px" }}>
                           GitHub
                         </h6>
                       </div>
-                      <div className="col-4">
+                      <div
+                        className="col-6 mt-2"
+                        style={{ textAlign: "center" }}
+                      >
                         <button
                           style={{
                             border: "1px solid rgb(0, 115, 177)",
-                            borderRadius: "2px",
+                            borderRadius: "4px",
                             color: "rgb(0, 115, 177)",
                           }}
                         >
@@ -310,7 +330,7 @@ class NewsFeed extends Component {
                     </div>
                     <div className="row pt-3">
                       <div
-                        className="col-8"
+                        className="col-6"
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
@@ -321,15 +341,18 @@ class NewsFeed extends Component {
                           style={{ width: "40px" }}
                           src="https://www.corsinvest.it/wp-content/uploads/2019/10/github-logo.png"
                         />
-                        <h6 className="ml-1" style={{ fontSize: "12px" }}>
+                        <h6 className="ml-3 mt-2" style={{ fontSize: "15px" }}>
                           GitHub
                         </h6>
                       </div>
-                      <div className="col-4">
+                      <div
+                        className="col-6 mt-2"
+                        style={{ textAlign: "center" }}
+                      >
                         <button
                           style={{
                             border: "1px solid rgb(0, 115, 177)",
-                            borderRadius: "2px",
+                            borderRadius: "4px",
                             color: "rgb(0, 115, 177)",
                           }}
                         >

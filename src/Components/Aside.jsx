@@ -4,7 +4,7 @@ import vid1 from "../Assets/vid1.png";
 import vid2 from "../Assets/vid2.png";
 import vid3 from "../Assets/vid3.png";
 import workingnibba from "../Assets/workingnibba.jpg";
-
+import {Link} from "react-router-dom"
 import SmallAside from "./SmallAside";
 
 class Aside extends React.Component {
@@ -49,9 +49,11 @@ class Aside extends React.Component {
         </div>
         <div className="usersDiv">
           <p className="divTitle">People also viewed</p>
-          {this.state.profiles.map((profile,i) => {
-           return <SmallAside obj={profile} key={i}/>
-          })}
+
+          {this.state.profiles.map((profile) => 
+            <Link to={'/profile/'+profile._id}><h1>{profile.name}</h1></Link>
+          )}
+
         </div>
         <div className="lrn-div">
           <svg
