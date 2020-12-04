@@ -42,7 +42,7 @@ export default class SingleExperience extends Component {
               <h6>sexy beast management</h6>
 
               <span>{this.props.exp.area}</span>
-
+              <br />
               <span>{this.props.exp.role}</span>
               <br />
               <span>{this.props.exp.company}</span>
