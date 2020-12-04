@@ -7,7 +7,7 @@ import workingnibba from "../Assets/workingnibba.jpg";
 
 import { RiSendPlaneFill } from "react-icons/ri";
 
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import SmallAside from "./SmallAside";
 
@@ -26,16 +26,14 @@ class Aside extends React.Component {
       });
       const data = await response.json();
       this.setState({ profiles: data.slice(0, 4) });
-      console.log(this.state.profiles)
+      console.log(this.state.profiles);
     } catch (error) {
       console.log(error);
     }
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.fetchProfile();
-    
-    
   }
 
   render() {
@@ -43,6 +41,10 @@ class Aside extends React.Component {
 
     return (
       <>
+        {/* {this.state.profiles.map((profile) => 
+            <Link to={'/profile/'+profile._id}><h1>{profile.name}</h1></Link>
+          )} */}
+
         <div>
           <img
             className="ad"
@@ -57,35 +59,36 @@ class Aside extends React.Component {
           <ListGroup>
             {this.state.profiles.map(profile => {
               return (
-                <Row className="mb-3">
-                  <Col md="3">
-                    <img
-                      src={profile.image}
-                      style={{
-                        width: "55px",
-                        height: "55px",
-                        borderRadius: "100px",
-                      }}
-                      alt=""
-                    />
-                  </Col>
-                  <Col md="9" className="d-flex justify-content-between">
-                    <div className="d-inline-block">
-                      <h6>
-                        {profile.name} {profile.surname}
-                      </h6>
+                <Link to={"/profile/" + profile._id}>
+                  <Row className="mb-3">
+                    <Col md="3">
+                      <img
+                        src={profile.image}
+                        style={{
+                          width: "55px",
+                          height: "55px",
+                          borderRadius: "100px",
+                        }}
+                        alt=""
+                      />
+                    </Col>
+                    <Col md="9" className="d-flex justify-content-between">
+                      <div className="d-inline-block">
+                        <h6>
+                          {profile.name} {profile.surname}
+                        </h6>
 
-                      <p>{profile.title}</p>
-                    </div>
-                    <Button className="rounde-circle p-0 buttonContact bg-white text-muted">
-                      <RiSendPlaneFill />
-                    </Button>
-                  </Col>
-                </Row>
+                        <p>{profile.title}</p>
+                      </div>
+                      <Button className="rounde-circle p-0 buttonContact bg-white text-muted">
+                        <RiSendPlaneFill />
+                      </Button>
+                    </Col>
+                  </Row>
+                </Link>
               );
             })}
           </ListGroup>
-
         </div>
         <div className="lrn-div">
           <svg
