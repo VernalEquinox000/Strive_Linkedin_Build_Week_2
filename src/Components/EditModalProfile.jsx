@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
-
+import UploadPhoto from "./UploadPhoto"
 
 class EditModalProfile extends React.Component{
 
@@ -69,7 +69,12 @@ class EditModalProfile extends React.Component{
             <Col>
             <Form onSubmit={this.handleSubmit}>
                   <Form.Group>
-                    <Row>
+                            <Row>
+                              <Col>
+                                <UploadPhoto somedata={this.state.info.image} />
+                              </Col>
+                            </Row>
+                            <Row>
                       <Col>
                         <Form.Label>First Name</Form.Label>
                         <Form.Control

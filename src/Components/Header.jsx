@@ -82,7 +82,6 @@ export default class Header extends Component {
                         paddingTop: "100px",
                       }}
                                     >
-                                        <UploadPhoto somedata={this.state.profile} />
                       {`${name} ${surname}`}{" "}
                       <FontAwesomeIcon
                         icon={faEdit}
