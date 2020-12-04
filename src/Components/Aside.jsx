@@ -21,19 +21,22 @@ class Aside extends React.Component {
         },
       });
       const data = await response.json();
-      this.setState({ profiles: data.slice(0, 6) });
+      this.setState({ profiles: data.slice(0, 4) });
+      console.log(this.state.profiles)
     } catch (error) {
       console.log(error);
     }
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchProfile();
+    
+    
   }
 
   render() {
     console.log(this.state.profiles);
-    console.log(this.state.profiles2);
+
     return (
       <>
         <div>
@@ -46,9 +49,11 @@ class Aside extends React.Component {
         </div>
         <div className="usersDiv">
           <p className="divTitle">People also viewed</p>
+
           {this.state.profiles.map((profile) => 
             <Link to={'/profile/'+profile._id}><h1>{profile.name}</h1></Link>
           )}
+
         </div>
         <div className="lrn-div">
           <svg

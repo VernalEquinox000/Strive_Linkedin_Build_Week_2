@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
-
-import {AddExperiece} from '../Api/experiences'
+import { Link } from "@material-ui/core";
+import {AddExperiece,AddPhotoExp} from '../Api/experiences';
+import { FaCamera,FaPhotoVideo,FaPaperPlane } from "react-icons/fa";
 export default class AddModal extends Component {
-  state={
-    body:null,
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      body: null,
+      
+     
+      fileSelected: null,
+    };
+    this.fileRef = React.createRef();
   }
+
+
   handleChange = (e) => {
     this.setState({
       body: {
@@ -15,13 +24,48 @@ export default class AddModal extends Component {
       },
     });
   };
-  handleSubmit = async (e) => {
+   handleSubmit = async (e) => {
     e.preventDefault();
     const id = this.props.object._id;
     const body = this.state.body;
-    await AddExperiece({ id, body });
+    
+    const response = await AddExperiece({ id, body });
+    const myidexp= await response.json()
+    
+    this.submitImg(id,myidexp._id);
+    console.log(myidexp)
+    
   };
-  
+  // handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const id = this.props.object._id;
+  //   const body = this.state.body;
+  //   await AddExperiece({ id, body });
+  // };
+  fileSelectedHandler = (e) => {
+    const data = new FormData();
+    data.append("experience", e.target.files[0]);
+    this.setState({ fileSelected: data });
+  };
+  submitImg = async (userId,expId) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}/picture`,
+        {
+          method: "POST",
+          body: this.state.fileSelected,
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          },
+        }
+      );
+      if (response.ok) {
+        alert("uploaded");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   render() {
     return (
@@ -141,6 +185,23 @@ export default class AddModal extends Component {
           </Modal.Header>
           <Modal.Body></Modal.Body>
           <Modal.Footer>
+          <div class="image-upload" style={{ cursor: "pointer" }}>
+                  <label for="file-input">
+                    <Link>
+                      <input
+                        type="file"
+                        id="file"
+                        ref={(inputRef) => (this.fileRef = inputRef)}
+                        onChange={this.fileSelectedHandler}
+                        style={{ display: "none" }}
+                      />
+                      <FaCamera
+                        style={{ width: "20px" }}
+                        onClick={() => this.fileRef.click()}
+                      />
+                    </Link>
+                  </label>
+                </div>
             <Button onClick={this.props.onHide}>Close</Button>
           </Modal.Footer>
         </Modal>

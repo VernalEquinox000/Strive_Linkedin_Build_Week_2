@@ -23,7 +23,7 @@ export default class SingleExperience extends Component {
         <Row>
           <Col xl="1" className="pr-0">
             <img
-              src="https://media-exp1.licdn.com/dms/image/C560BAQG6wKVXF9sMfg/company-logo_100_100/0?e=1614816000&v=beta&t=4B6v3D5AWcZN_TIL-mhM6tAkst2721kRR00SNwqy7Ys"
+              src={this.props.exp.image}
               alt=""
               style={{ width: "56px", height: "56px" }}
             />
@@ -34,7 +34,11 @@ export default class SingleExperience extends Component {
           >
             <div>
               <h6>sexy beast management</h6>
-              <span>{this.props.exp.area}</span> <br />
+
+
+              <span>{this.props.exp.area}</span>
+              <br />
+
               <span>{this.props.exp.role}</span>
               <br />
               <span>{this.props.exp.company}</span>
