@@ -94,7 +94,7 @@ class NavBar extends Component {
               <div className="flex flex-column">
                 <Nav.Link href="#" className="nav-link">
                   <img src={user} alt="" className="userNavImg" />
-                  <Link to="/">
+                  <Link to="/:_id">
                     <span>
                       Me{" "}
                       <RiArrowDownSFill

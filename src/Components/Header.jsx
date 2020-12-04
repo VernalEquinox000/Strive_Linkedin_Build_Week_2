@@ -94,7 +94,8 @@ export default class Header extends Component {
                 </Card>
 
                 {this.state.profile._id ? (
-                  <ExperienceSection object={this.state.profile} />
+                  //<ExperienceSection object={this.state.profile} />
+                  <ExperienceSection object={this.state.profile} id={this.props.match.params._id} />
                 ) : null}
               </Col>
               <Col xs={4}>

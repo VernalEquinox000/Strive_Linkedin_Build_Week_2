@@ -29,7 +29,7 @@ function App() {
       <Router>
         <NavBar />
         <Route path="/" exact component={Header} />
-        <Route path="/header:_id" render = {(props) => <Header {...props} />} />
+        <Route path="/:_id" render = {(props) => <Header {...props} />} />
         <Route path="/newsfeed" component={NewsFeed} />
         <Route path="/newsfeed" render = {(props) => <NewsFeed {...props} />} />
         <Footer />
@@ -40,18 +40,10 @@ function App() {
 
 export default App;
 
-/* <div className="App">
-      <NavBar />
-      <Route exact path="/">
-        <Redirect to="profile/me" />
-      </Route>
-
-      <Route
-        exact
-        path="/profile/:user"
-        render={(props) => <Profile {...props} />}
-      />
-      <Route exact path="/feeds" render={(props) => <Feeds {...props} />} />
-
-      <Footerr />
-    </div> */
+{/* <Router>
+        <NavBar />
+        <Route path="/" exact component={Header} />
+        <Route path="/:_id" component={Header} />
+        <Route path="/newsfeed" component={NewsFeed} />
+        <Footer />
+      </Router> */}
