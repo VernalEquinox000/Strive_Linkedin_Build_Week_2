@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Navbar,
@@ -23,7 +24,6 @@ import {
 
 import logo from "../Assets/LI-In-Bug.png";
 import user from "../Assets/97.jpg";
-import {Link} from "react-router-dom"
 
 class NavBar extends Component {
   render() {
@@ -62,7 +62,9 @@ class NavBar extends Component {
             <Nav className="ml-auto">
               <Nav.Link className="flex flex-column" href="#home">
                 <FontAwesomeIcon icon={faHome} />
-                <Link to = "/newsfeed/"><span>Home</span></Link>
+                <Link to="/newsfeed/">
+                  <span>Home</span>
+                </Link>
               </Nav.Link>
               <Nav.Link className="flex flex-column" href="#web">
                 <FontAwesomeIcon icon={faUserFriends} />
@@ -86,14 +88,14 @@ class NavBar extends Component {
                 <Nav.Link href="#" className="nav-link">
                   <img src={user} alt="" className="userNavImg" />
                   <Link to="/">
-                  <span>
-                    Me{" "}
-                    <RiArrowDownSFill
-                      className="m-0 p-0 d-inline-block"
-                      style={{ fontSize: "17px" }}
-                    />
+                    <span>
+                      Me{" "}
+                      <RiArrowDownSFill
+                        className="m-0 p-0 d-inline-block"
+                        style={{ fontSize: "17px" }}
+                      />
                     </span>
-                    </Link>
+                  </Link>
                 </Nav.Link>
               </div>
             </Nav>

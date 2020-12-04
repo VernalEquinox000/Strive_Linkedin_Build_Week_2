@@ -14,13 +14,24 @@ import "./Style/App.css";
 
 function App() {
   return (
+    // <div className="App">
+    //   <NavBar />
+    //   {/* <Header /> */}
+    //   <NewsFeed />
+    //   <Footer />
+    // </div>
     <div className="App">
-
-      <NavBar />
-      {/* <Header /> */}
+      {/* <NavBar />
+      <Header />
       <NewsFeed />
-      <Footer />
-
+      <Footer /> /} */}
+      <Router>
+        <NavBar />
+        <Route path="/" exact component={Header} />
+        <Route path="/:_id" component={Header} />
+        <Route path="/newsfeed" component={NewsFeed} />
+        <Footer />
+      </Router>
     </div>
   );
 }
