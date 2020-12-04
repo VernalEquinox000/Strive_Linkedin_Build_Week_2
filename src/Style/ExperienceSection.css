@@ -1,0 +1,21 @@
+.expDescription {
+  border-bottom: 1px solid, black !important;
+}
+
+.expBtn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: transparent !important;
+  border: none;
+
+  padding: 0;
+}
+
+.expBtn:hover {
+  background-color: #eaf4fe !important;
+}
+
+.experience {
+  padding: 0 !important
+}
