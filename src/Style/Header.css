@@ -1,0 +1,15 @@
+.headerProfileImage {
+  top: -75px;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.editHeader {
+  color: #007bff;
+}
+.editHeader:hover {
+  color: #0069d9;
+  cursor: pointer;
+}
