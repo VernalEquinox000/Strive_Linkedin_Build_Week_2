@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {  getAllPosts } from "../Api/post";
+import { getAllPosts } from "../Api/post";
 import MySinglePost from "./MySinglePost";
- import AddPostModal from "./AddPostModal"
+import AddPostModal from "./AddPostModal";
 import AddPostCard from "./AddPostCard";
 import {
   Card,
@@ -36,7 +36,7 @@ class NewsFeed extends Component {
     postId: null,
     newPost: [],
     person: [],
-    modalShow:false,
+    modalShow: false,
     image: "",
     showModal: false,
     users: [],
@@ -44,7 +44,6 @@ class NewsFeed extends Component {
     authUser: {},
     oldPostText: "",
   };
-
 
   fetchData = async () => {
     const exp = await getAllPosts();
@@ -65,12 +64,15 @@ class NewsFeed extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
+      <div className="container ">
+        <div className="row mt-1">
           <div className="col-lg-3 col-md-12 col-sm-12">
             <div className="row">
               <div className="col-12">
-                <Card className="left-side-newsfeed">
+                <Card
+                  className="left-side-newsfeed"
+                  style={{ borderRadius: "10px" }}
+                >
                   <Card.Body className="banner-profile">
                     {/* {this.state.user &&
                       this.state.users.slice(0, 1).map((user, i) => {
@@ -213,9 +215,7 @@ class NewsFeed extends Component {
 
           <div className="col-lg-6 col-md-12 col-sm-12 marg-top">
             <div className="row">
-
               <AddPostCard fetchData={this.fetchData} />
-
             </div>
 
             <Row>
@@ -239,7 +239,7 @@ class NewsFeed extends Component {
             </Row> */}
             <div className="row">
               <div className="col-lg-12 col-md-6 col-sm-12 top-marg">
-                <Card>
+                <Card style={{ borderRadius: "10px" }}>
                   <Card.Body>
                     <p
                       style={{
