@@ -6,7 +6,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import Aside from "./Aside";
 import EditModalProfile from "./EditModalProfile";
 import ExperienceSection from "./ExperienceSection";
-
+import "../Style/Header.css";
 import services from "../Api/auth";
 
 export default class Header extends Component {
@@ -16,7 +16,7 @@ export default class Header extends Component {
   };
 
   fetchProfile = async () => {
-    services.fetchProfile((data) => {
+    services.fetchProfile(data => {
       this.setState({ profile: data });
 
       console.log(this.state.profile);
@@ -49,12 +49,7 @@ export default class Header extends Component {
                   <Card.Body className="position-relative">
                     <img
                       src={image}
-                      className="position-absolute"
-                      style={{
-                        top: "-75px",
-                        width: "150px",
-                        borderRadius: "100px",
-                      }}
+                      className="position-absolute headerProfileImage"
                     />
                     <Card.Text
                       style={{
@@ -65,6 +60,7 @@ export default class Header extends Component {
                     >
                       {`${name} ${surname}`}{" "}
                       <FontAwesomeIcon
+                        className="editHeader"
                         icon={faEdit}
                         onClick={() => this.setState({ editShow: true })}
                       />

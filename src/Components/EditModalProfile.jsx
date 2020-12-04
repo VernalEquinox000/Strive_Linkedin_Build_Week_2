@@ -1,18 +1,19 @@
 import React from "react";
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import UploadPhoto from "./UploadPhoto";
+import "../Style/EditModalProfile.css";
 class EditModalProfile extends React.Component {
   state = {
     info: this.props.obj,
     modalShow: true,
   };
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     if (prevProps.obj !== this.props.obj) {
       this.setState({ info: this.props.obj });
     }
   };
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       info: {
         ...this.state.info,
@@ -20,7 +21,7 @@ class EditModalProfile extends React.Component {
       },
     });
   };
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
     try {
       const response = await fetch(
