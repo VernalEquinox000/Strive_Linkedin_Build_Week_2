@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import {
   Container,
   Navbar,
@@ -24,6 +23,7 @@ import {
 
 import logo from "../Assets/LI-In-Bug.png";
 import user from "../Assets/97.jpg";
+import {withRouter, Link} from "react-router-dom"
 
 class NavBar extends Component {
   render() {
@@ -59,8 +59,15 @@ class NavBar extends Component {
               </Form>
             </div>
 
+
+            {/* <div className={props.location.pathname === '/menu' ? 'nav-link active' : 'nav-link'}>Menu</div>
+            </Link>
+            <Link to="/reservation">
+              <div className={props.location.pathname === '/reservation' ? 'nav-link active' : 'nav-link'}>Reservation</div>
+            </Link>
+ */}
             <Nav className="ml-auto">
-              <Nav.Link className="flex flex-column" href="#home">
+              <Nav.Link className="flex flex-column" href="">
                 <FontAwesomeIcon icon={faHome} />
                 <Link to="/newsfeed/">
                   <span>Home</span>
@@ -125,4 +132,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
