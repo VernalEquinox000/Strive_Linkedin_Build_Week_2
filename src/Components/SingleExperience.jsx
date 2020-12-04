@@ -21,7 +21,7 @@ export default class SingleExperience extends Component {
     return (
       <div className="listItem">
         <Row>
-          <Col xl="1" className="pr-0">
+          <Col xl="1" className="pr-0 mt-1">
             <img
               src={this.props.exp.image}
               alt=""
@@ -33,14 +33,11 @@ export default class SingleExperience extends Component {
             xl="11"
           >
             <div>
-              <h6>sexy beast management</h6>
-
+              <h6 style={{ marginBottom: "0" }}>{this.props.exp.role}</h6>
 
               <span>{this.props.exp.area}</span>
               <br />
 
-              <span>{this.props.exp.role}</span>
-              <br />
               <span>{this.props.exp.company}</span>
             </div>
 
