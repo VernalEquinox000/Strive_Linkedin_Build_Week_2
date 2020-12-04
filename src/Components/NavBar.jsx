@@ -59,13 +59,13 @@ class NavBar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse
               id="basic-navbar-nav"
-              className="pb-2 pt-1 py-md-0"
+              className="pb-2 pt-1 py-xl-0"
             >
               <Nav className="ml-auto">
                 <Nav.Link className="flex flex-column" href="#home">
                   <FontAwesomeIcon
                     icon={faHome}
-                    className="d-none d-md-block"
+                    className="d-none d-xl-block"
                   />
                   <Link to="/newsfeed/" className="navRouterLink">
                     <span className="py-1 pt-md-0">Home</span>
@@ -74,21 +74,21 @@ class NavBar extends Component {
                 <Nav.Link className="flex flex-column" href="#web">
                   <FontAwesomeIcon
                     icon={faUserFriends}
-                    className="d-none d-md-block"
+                    className="d-none d-xl-block"
                   />
                   <span className="py-1 pt-md-0">Web</span>
                 </Nav.Link>
                 <Nav.Link className="flex flex-column" href="#work">
                   <FontAwesomeIcon
                     icon={faBriefcase}
-                    className="d-none d-md-block"
+                    className="d-none d-xl-block"
                   />
                   <span className="py-1 pt-md-0">Work</span>
                 </Nav.Link>
                 <Nav.Link className="flex flex-column" href="#messages">
                   <FontAwesomeIcon
                     icon={faCommentDots}
-                    className="d-none d-md-block"
+                    className="d-none d-xl-block"
                   />
                   <span className="py-1 pt-md-0">Messages</span>
                 </Nav.Link>
@@ -96,7 +96,7 @@ class NavBar extends Component {
                 <Nav.Link className="flex flex-column" href="#notifications">
                   <FontAwesomeIcon
                     icon={faBell}
-                    className="d-none d-md-block"
+                    className="d-none d-xl-block"
                   />
                   <span className="py-1 pt-md-0">Notifications</span>
                 </Nav.Link>
@@ -106,7 +106,7 @@ class NavBar extends Component {
                     <img
                       src={user}
                       alt=""
-                      className="userNavImg d-none d-md-block"
+                      className="userNavImg d-none d-xl-block"
                     />
                     <Link to="/" className="navRouterLink">
                       <span className="py-1 pt-md-0">
@@ -122,7 +122,7 @@ class NavBar extends Component {
               </Nav>
               <Nav className="second-nav">
                 <Nav.Link href="#" className="nav-link">
-                  <CgMenuGridR className="d-none d-md-block" />
+                  <CgMenuGridR className="d-none d-xl-block" />
                   <span className="py-1 pt-md-0">
                     Product{" "}
                     <RiArrowDownSFill
