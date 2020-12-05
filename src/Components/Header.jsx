@@ -16,8 +16,8 @@ export default class Header extends Component {
   };
 
   fetchProfile = async () => {
-
-    const id = this.props.match.params._id==="me"? 'me' : this.props.match.params._id
+    const id =
+      this.props.match.params._id === "me" ? "me" : this.props.match.params._id;
     services.fetchProfile(id, (data) => {
       this.setState({ profile: data });
 
@@ -27,10 +27,10 @@ export default class Header extends Component {
     });
   };
   tryParam = async () => {
-    let parameters = this.props.match.params._id
-    console.log(parameters)
-  }
-/*   //////////////
+    let parameters = this.props.match.params._id;
+    console.log(parameters);
+  };
+  /*   //////////////
   fetchUsers = async () => {
     try {
       const url = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -46,15 +46,14 @@ export default class Header extends Component {
     }
   };
   ///////////// */
-  
+
   componentDidMount() {
     this.fetchProfile();
     this.tryParam();
-
   }
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      this.fetchProfile()
+      this.fetchProfile();
     }
   }
 
@@ -106,7 +105,7 @@ export default class Header extends Component {
                     <Button variant="primary">Connect</Button>{" "}
                   </Card.Body>
                 </Card>
-                <Card className="mt-5">
+                <Card className="mt-3">
                   <Card.Body>
                     <Card.Text
                       style={{ fontSize: "30px", fontWeight: "bolder" }}
@@ -120,7 +119,14 @@ export default class Header extends Component {
 
                 {this.state.profile._id ? (
                   //<ExperienceSection object={this.state.profile} />
-                  <ExperienceSection object={this.state.profile} id={this.props.match.params._id==="me"? this.state.profile._id : this.props.match.params._id} />
+                  <ExperienceSection
+                    object={this.state.profile}
+                    id={
+                      this.props.match.params._id === "me"
+                        ? this.state.profile._id
+                        : this.props.match.params._id
+                    }
+                  />
                 ) : null}
               </Col>
               <Col xs={4}>

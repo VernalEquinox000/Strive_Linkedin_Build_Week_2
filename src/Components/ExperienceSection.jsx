@@ -11,7 +11,7 @@ export default class ExperienceSection extends Component {
     myexperiences: null,
   };
 
-  fetchExperiences = async ()=>{
+  fetchExperiences = async () => {
     const id = this.props.object._id;
     console.log(id);
     if (!id || id === undefined) {
@@ -19,14 +19,12 @@ export default class ExperienceSection extends Component {
       return;
     }
     const exp = await getAllExperieces(id);
-    this.setState({myexperiences:exp})
-    console.log(exp)
-  }
+    this.setState({ myexperiences: exp });
+    console.log(exp);
+  };
   componentDidMount = async () => {
-   this.fetchExperiences()
-   
-   
-  }
+    this.fetchExperiences();
+  };
 
   render() {
     return (
